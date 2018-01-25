@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Generator API &mdash; Wave Data Generation 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Wave Data Generation 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Fake Formulas" href="fake.html"/>
+        <link rel="prev" title="Wave Data Generator" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Wave Data Generation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Generator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fake.html">Fake Formulas</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wave Data Generation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Generator API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-generator-api">
+<h1>Data Generator API<a class="headerlink" href="#data-generator-api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="data_generator.DataGenerator">
+<em class="property">class </em><code class="descclassname">data_generator.</code><code class="descname">DataGenerator</code><a class="headerlink" href="#data_generator.DataGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility to generate data based on a source CSV file, using datasets for reference data and a list of
+column transformations to apply to the source file. The result is a new set of data with columns that
+were either added or transformed from columns in the source file.</p>
+<dl class="attribute">
+<dt id="DataGenerator.rows">
+<code class="descname">rows</code><a class="headerlink" href="#DataGenerator.rows" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; A list of rows containing all column values from the source file and any applied transformations.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DataGenerator.datasets">
+<code class="descname">datasets</code><a class="headerlink" href="#DataGenerator.datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> &#8211; A dictionary of all loaded datasets by name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DataGenerator.column_names">
+<code class="descname">column_names</code><a class="headerlink" href="#DataGenerator.column_names" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> &#8211; A dictionary of column names to their corresponding index in a single row of data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DataGenerator.current_row">
+<code class="descname">current_row</code><a class="headerlink" href="#DataGenerator.current_row" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> &#8211; The current row index this data generator is currently processing. Useful for some formula that
+generate a value based on the current row.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.add_constant_column">
+<code class="descname">add_constant_column</code><span class="sig-paren">(</span><em>column_name</em>, <em>constant</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.add_constant_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a constant value or function for every row in this column.</p>
+<p>The provided value can be a constant value, a list of values, or a callable function.
+If provided a list of values, a random value will be selected from the list.
+If provided a callable function, it will be called to generate a value.
+The callable function must either accept no parameters or a single parameter consisting of
+column_values, a dictionary of column names to their values for the current row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; The name of the column to create.</li>
+<li><strong>constant</strong> (<em>value</em><em>, </em><em>list</em><em>, or </em><em>callable</em>) &#8211; The constant to apply.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.add_copy_column">
+<code class="descname">add_copy_column</code><span class="sig-paren">(</span><em>column_name</em>, <em>source_column_name</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.add_copy_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a new column by copying values from an existing column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; The name of the column to create.</li>
+<li><strong>source_column_name</strong> (<em>str</em>) &#8211; The name of the column to copy.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.add_custom_column_generator">
+<code class="descname">add_custom_column_generator</code><span class="sig-paren">(</span><em>generator_function</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.add_custom_column_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the entire list of values to be added as columns.</p>
+<p>Used to create columns which cannot be formulated with any of the basic column generators. This
+column generator must provide a callable function that accepts a 3-argument parameter list consisting
+of (column_names, rows, datasets) where:</p>
+<blockquote>
+<div><p>column_names: is the dictionary of column names to their index in a single row</p>
+<p>rows: is all the data in a list of lists</p>
+<p>datasets: is the dictionary of all defined datasets</p>
+</div></blockquote>
+<p>The provided generator_function must return a dictionary of column names to add to a list of columns
+values. That list of column values must match the number of rows that exist in the data.</p>
+<p>If one of the entries in the dictionary is an existing column, it will replace the old data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>generator_function</strong> (<em>callable</em>) &#8211; The custom generator function to apply.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.add_dataset">
+<code class="descname">add_dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.add_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add arbitrary data into the dictionary of datasets.</p>
+<p>This is useful when a column transformation will need to this dataset frequently.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataset_name</strong> (<em>str</em>) &#8211; The name of the dataset.</li>
+<li><strong>data</strong> &#8211; The data to add.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.add_formula_column">
+<code class="descname">add_formula_column</code><span class="sig-paren">(</span><em>column_name</em>, <em>formula</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.add_formula_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a value by applying the given formula function.</p>
+<p>If the column name provided is an existing column, it replaces the old values in that column.</p>
+<p>The callable formula function must either accept no parameters or a single parameter consisting of
+column_values, a dictionary of column names to their values for the current row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; The name of the column to create.</li>
+<li><strong>formula</strong> (<em>callable</em>) &#8211; The formula to apply.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.add_map_column">
+<code class="descname">add_map_column</code><span class="sig-paren">(</span><em>column_name</em>, <em>source_column_name</em>, <em>value_map</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.add_map_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a value by mapping an existing value from the provided source column to a new value.</p>
+<p>If the column name and source column name provided are the same, it will replace the old
+values in the source column.</p>
+<p>The value_map provides of mapping of source column values to its new value. The new value
+can be a constant value, a list of values, or a callable function. A mapping with key None, is used
+as a default value if no mapping exists in the value_map provided. If a mapping does not exist
+in the value_map provided and a None key is not defined, the source column value will be used instead.</p>
+<p>If provided a list of values, a random value will be selected from the list. If provided a callable function,
+it will be called to generate a value. The callable function must either accept no parameters or a single
+parameter consisting of column_values, a dictionary of column names to their values for the current row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; The name of the column to create.</li>
+<li><strong>source_column_name</strong> (<em>str</em>) &#8211; The name of the source column.</li>
+<li><strong>value_map</strong> (<em>dict</em>) &#8211; A mapping of source column values to their new value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.apply_transformations">
+<code class="descname">apply_transformations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.apply_transformations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply all the column transformations added so far.</p>
+<p>This will generate all column values and append them to the source data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.column_values_to_row">
+<code class="descname">column_values_to_row</code><span class="sig-paren">(</span><em>column_values</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.column_values_to_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert dictionary of column names to values to a row of data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column_values</strong> (<em>dict</em>) &#8211; The dictionary of column names to values to convert.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A row of data.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.duplicate_rows">
+<code class="descname">duplicate_rows</code><span class="sig-paren">(</span><em>duplication_factor</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.duplicate_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicates rows in the data by the given duplication factor.</p>
+<p>The duplication factor can be a constant int value or a callable function. If provided a
+int value, each row will be duplicated that many times.  If provided a callable function,
+it will be called to generate a int value for every row. The callable function must either
+accept no parameters or a single parameter consisting of column_values, a dictionary of
+column names to their values for the current row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>duplication_factor</strong> (<em>int</em><em>, </em><em>callable</em>) &#8211; A constant int value or callable function.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>filter_function</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter rows given a filter_function to evaluate against each row.</p>
+<p>All rows which in which the filter_function evaluates to true will be kept. The filter_function
+will be called with a single argument that contains a dict of column names to their corresponding
+value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filter_function</strong> (<em>callable</em>) &#8211; The function to filter against.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.load_dataset">
+<code class="descname">load_dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>dataset_file_name</em>, <em>source_column_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.load_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a CSV file to be used as reference data for the data generator.</p>
+<p>This data will be loaded either from local disk or S3 depending on the READ_MODE
+environment variable. If READ_MODE=S3, it will load the dataset file using the
+load_dataset_from_s3 function, otherwise it will read from local disk using
+the load_dataset_from_s3 function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset_name</strong> (<em>str</em>) &#8211; The name of the dataset.</li>
+<li><strong>dataset_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the dataset CSV file.</li>
+<li><strong>source_column_names</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to load. If None or not provided, it will load all columns in the CSV.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dataset containing a list of rows where each row is a dictionary of column names to their
+values for that row.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#data_generator.Dataset" title="data_generator.Dataset">Dataset</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.load_dataset_from_disk">
+<code class="descname">load_dataset_from_disk</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>dataset_file_name</em>, <em>source_column_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.load_dataset_from_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a CSV file to be used as reference data for the data generator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset_name</strong> (<em>str</em>) &#8211; The name of the dataset.</li>
+<li><strong>dataset_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the dataset CSV file.</li>
+<li><strong>source_column_names</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to load. If None or not provided, it will load all columns in the CSV.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dataset containing a list of rows where each row is a dictionary of column names to their
+values for that row.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#data_generator.Dataset" title="data_generator.Dataset">Dataset</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.load_dataset_from_s3">
+<code class="descname">load_dataset_from_s3</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>dataset_file_name</em>, <em>source_column_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.load_dataset_from_s3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a CSV file from S3 to be used as reference data for the data generator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset_name</strong> (<em>str</em>) &#8211; The name of the dataset.</li>
+<li><strong>dataset_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the dataset CSV file in the S3_BUCKET_NAME bucket.</li>
+<li><strong>source_column_names</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to load. If None or not provided, it will load all columns in the CSV.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dataset containing a list of rows where each row is a dictionary of column names to their
+values for that row.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#data_generator.Dataset" title="data_generator.Dataset">Dataset</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.load_source_file">
+<code class="descname">load_source_file</code><span class="sig-paren">(</span><em>source_file_name</em>, <em>source_column_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.load_source_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a CSV file to be used as the source data to add columns and apply column transformations to.</p>
+<p>The data will be loaded either from local disk or S3 depending on the READ_MODE
+environment variable. If READ_MODE=S3, it will load the source file using the
+load_source_file_from_s3 function, otherwise it will read from local disk using
+the load_source_file_from_disk function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the source CSV file.</li>
+<li><strong>source_column_names</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to load. If None or not provided, it will load all columns in the CSV.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.load_source_file_from_disk">
+<code class="descname">load_source_file_from_disk</code><span class="sig-paren">(</span><em>source_file_name</em>, <em>source_column_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.load_source_file_from_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a CSV file from disk to be used as the source data to add columns and apply column transformations to.</p>
+<p>The data is loaded into the rows property as a list of column values. If a list of source_column_names
+is defined, only those columns will be loaded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the source CSV file.</li>
+<li><strong>source_column_names</strong> (<em>list</em><em>, </em><em>optional</em><em>,</em><em></em>) &#8211; A optional list of column names to load. If None or not provided, it will load all columns in the CSV.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.load_source_file_from_s3">
+<code class="descname">load_source_file_from_s3</code><span class="sig-paren">(</span><em>source_file_name</em>, <em>source_column_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.load_source_file_from_s3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a CSV file from S3 to be used as the source data to add columns and apply column transformations to.</p>
+<p>In addition to a source_file_name, the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+environment variable must be set to access the appropriate AWS account. A
+S3_BUCKET_NAME environment variable where files will reside in S3 must also be set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the source CSV file in the S3_BUCKET_NAME bucket.</li>
+<li><strong>source_column_names</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to load. If None or not provided, it will load all columns in the CSV.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.remove_dataset">
+<code class="descname">remove_dataset</code><span class="sig-paren">(</span><em>dataset_name</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.remove_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a datset from the datasets dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_name</strong> (<em>str</em>) &#8211; The name of the dataset to remove.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.rename_column">
+<code class="descname">rename_column</code><span class="sig-paren">(</span><em>source_column_name</em>, <em>new_column_name</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.rename_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renames a column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_column_name</strong> (<em>str</em>) &#8211; The name of the column to rename.</li>
+<li><strong>new_column_name</strong> (<em>str</em>) &#8211; The new name of the column.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.rename_columns">
+<code class="descname">rename_columns</code><span class="sig-paren">(</span><em>column_rename_map</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.rename_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renames multiple columns.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column_rename_map</strong> (<em>dict</em>) &#8211; A dictionary of source columns names to their new names.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.reverse">
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse rows in place.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="data_generator.DataGenerator.row_count">
+<code class="descname">row_count</code><a class="headerlink" href="#data_generator.DataGenerator.row_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of rows loaded.</p>
+<p>You can explicitly set the row count, which is useful when generating data
+but not loading any source data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.row_to_column_values">
+<code class="descname">row_to_column_values</code><span class="sig-paren">(</span><em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.row_to_column_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a row of data into a dictionary of column names to values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>row</strong> (<em>list</em>) &#8211; The row of data to convert.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of column names to values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.rows_to_dataset">
+<code class="descname">rows_to_dataset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.rows_to_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the the rows of this data to a Dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The rows of this data as a Dataset.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#data_generator.Dataset" title="data_generator.Dataset">Dataset</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.shuffle">
+<code class="descname">shuffle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.shuffle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffle rows randomly in place.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.sort_by">
+<code class="descname">sort_by</code><span class="sig-paren">(</span><em>column_name</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.sort_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort rows by a given column.</p>
+<p>An optional reverse boolean can be specified to reverse the order of the list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; The column to sort by.</li>
+<li><strong>reverse</strong> (<em>bool</em><em>, </em><em>optional</em>) &#8211; The order will be reversed if true.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.unique">
+<code class="descname">unique</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.unique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters rows to just unique data with no duplicate rows</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>output_file_name</em>, <em>columns=None</em>, <em>max_rows=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the specified list of columns to a CSV file.</p>
+<p>The data will be written to local disk or S3 depending on the WRITE_MODE
+environment variable. If WRITE_MODE=S3, it will write the file using the
+write_to_s3 function, otherwise it will write to local disk with the
+write_to_disk function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>output_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the output CSV file.</li>
+<li><strong>columns</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to write. If None or not provided, it will write all columns to the CSV.</li>
+<li><strong>max_rows</strong> (<em>int</em><em>, </em><em>optional</em>) &#8211; A maximum number of rows to write before continuing to a new file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of output file names that were written.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.write_to_disk">
+<code class="descname">write_to_disk</code><span class="sig-paren">(</span><em>output_file_name</em>, <em>columns=None</em>, <em>max_rows=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.write_to_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the specified list of columns to a CSV file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>output_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the output CSV file.</li>
+<li><strong>columns</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to write. If None or not provided, it will write all columns to the CSV.</li>
+<li><strong>max_rows</strong> (<em>int</em><em>, </em><em>optional</em>) &#8211; A maximum number of rows to write before continuing to a new file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of output file names that were written.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.DataGenerator.write_to_s3">
+<code class="descname">write_to_s3</code><span class="sig-paren">(</span><em>output_file_name</em>, <em>columns=None</em>, <em>max_rows=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.DataGenerator.write_to_s3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the specified list of columns to a CSV file in S3.</p>
+<p>The AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variable must be set to
+write to a AWS account. A S3_BUCKET_NAME environment variable where files will reside
+in S3 must also be set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>output_file_name</strong> (<em>str</em>) &#8211; The file name (including path) of the output CSV file.</li>
+<li><strong>columns</strong> (<em>list</em><em>, </em><em>optional</em>) &#8211; A optional list of column names to write. If None or not provided, it will write all columns to the CSV.</li>
+<li><strong>max_rows</strong> (<em>int</em><em>, </em><em>optional</em>) &#8211; A maximum number of rows to write before continuing to a new file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of output file names that were written.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="data_generator.Dataset">
+<em class="property">class </em><code class="descclassname">data_generator.</code><code class="descname">Dataset</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.Dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference data loaded and used by a data generator.</p>
+<p>The data is loaded as a list of rows where each row contains a dictionary
+of column names to their values for that row.</p>
+<dl class="attribute">
+<dt id="Dataset.data">
+<code class="descname">data</code><a class="headerlink" href="#Dataset.data" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; A list of rows where each row is a dictionary of column names to their values for that row.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.Dataset.group_by">
+<code class="descname">group_by</code><span class="sig-paren">(</span><em>column_name</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.Dataset.group_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary grouped by the given column.</p>
+<p>The result is a dictionary where the key is a unique column value in the given column and the value is
+a list of rows matching that column value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column_name</strong> (<em>str</em>) &#8211; The name of the column to group by.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary where the key is a unique column value in the provided column and the value
+is a list of rows that matching that column value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="data_generator.Dataset.unique">
+<code class="descname">unique</code><span class="sig-paren">(</span><em>column_name</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.Dataset.unique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of unique values for the given column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column_name</strong> (<em>str</em>) &#8211; The name of the column to extract unique values from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of unique values in the column.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fake.html" class="btn btn-neutral float-right" title="Fake Formulas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Wave Data Generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

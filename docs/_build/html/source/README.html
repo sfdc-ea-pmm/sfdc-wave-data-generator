@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Wave Data Generator &mdash; Wave Data Generation 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Wave Data Generation 1.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Wave Data Generation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="data_generator.html">Data Generator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fake.html">Fake Formulas</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wave Data Generation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Wave Data Generator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="wave-data-generator">
+<h1>Wave Data Generator<a class="headerlink" href="#wave-data-generator" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python version 3.6 installed locally. See the installation guides for
+<a class="reference external" href="http://docs.python-guide.org/en/latest/starting/install3/osx/">OS
+X</a>,
+<a class="reference external" href="http://docs.python-guide.org/en/latest/starting/install3/win/">Windows</a>,
+and
+<a class="reference external" href="http://docs.python-guide.org/en/latest/starting/install3/linux/">Linux</a>.</li>
+<li>Setuptools and Pip installed locally. See the Python install guides
+above for installation instructions.</li>
+</ul>
+<p>On OS X, you can verify your system by running
+<code class="docutils literal"><span class="pre">python3</span> <span class="pre">--version;</span> <span class="pre">pip3</span> <span class="pre">--version</span></code>.</p>
+<p>While not required, it is recommended you have
+<a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> installed locally
+to avoid package conflicts. Accomplish this by running
+<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">virtualenv</span></code> or <code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">virtualenv</span></code> on OS X.</p>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Install all dependencies by running:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>The following environment variables can be set to read and write files from AWS</p>
+<ul class="simple">
+<li><strong>AWS_ACCESS_KEY_ID</strong>: Your AWS Access Key ID.</li>
+<li><strong>AWS_SECRET_ACCESS_KEY</strong>: Your AWS Secret Access Key.</li>
+<li><strong>S3_BUCKET_NAME</strong>: The bucket name to read and write files from.</li>
+<li><strong>READ_MODE</strong>: Set to either S3 or LOCAL. If S3, all input files will be read from the AWS bucket specified.</li>
+<li><strong>WRITE_MODE</strong>: Set to either S3 or LOCAL. If S3, all output files will be written to the AWS bucket specified.</li>
+</ul>
+<p>Locally, you can try:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">AWS_SECRET_ACCESS_KEY</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="o">&gt;</span>
+<span class="n">export</span> <span class="n">AWS_ACCESS_KEY_ID</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+<span class="n">export</span> <span class="n">S3_BUCKET_NAME</span><span class="o">=</span><span class="n">ac</span><span class="o">-</span><span class="n">sdo</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">export</span> <span class="n">READ_MODE</span><span class="o">=</span><span class="n">LOCAL</span>
+<span class="n">export</span> <span class="n">WRITE_MODE</span><span class="o">=</span><span class="n">S3</span>
+</pre></div>
+</div>
+<p>With those environment variables are set, you can run <code class="docutils literal"><span class="pre">python3</span> <span class="pre">sales_data_gen.py</span></code> or
+<code class="docutils literal"><span class="pre">python3</span> <span class="pre">services_data_gen.py</span></code> and it will read input files locally but write all output
+files to S3.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

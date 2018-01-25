@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fake Formulas &mdash; Wave Data Generation 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Wave Data Generation 1.0 documentation" href="../index.html"/>
+        <link rel="prev" title="Data Generator API" href="data_generator.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Wave Data Generation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_generator.html">Data Generator API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fake Formulas</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wave Data Generation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Fake Formulas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-data_generator.formula.fake">
+<span id="fake-formulas"></span><h1>Fake Formulas<a class="headerlink" href="#module-data_generator.formula.fake" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="data_generator.formula.fake.address">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake address formula. Example: &#8216;099 Ronald Stream
+Rodriguezmouth, SD 36006-3834&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.body">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">body</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.browser">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">browser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.browser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.building_number">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">building_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.building_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake building number formula. Example: &#8216;9012&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.choice">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">choice</code><span class="sig-paren">(</span><em>a</em>, <em>size=None</em>, <em>replace=True</em>, <em>p=None</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a random sample from a given 1-D array</p>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified">New in version 1.7.0.</span></p>
+</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>1-D array-like</em><em> or </em><em>int</em>) &#8211; If an ndarray, a random sample is generated from its elements.
+If an int, the random sample is generated as if a was np.arange(n)</li>
+<li><strong>size</strong> (<em>int</em><em> or </em><em>tuple of ints</em><em>, </em><em>optional</em>) &#8211; Output shape.  If the given shape is, e.g., <code class="docutils literal"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">k)</span></code>, then
+<code class="docutils literal"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">k</span></code> samples are drawn.  Default is None, in which case a
+single value is returned.</li>
+<li><strong>replace</strong> (<em>boolean</em><em>, </em><em>optional</em>) &#8211; Whether the sample is with or without replacement</li>
+<li><strong>p</strong> (<em>1-D array-like</em><em>, </em><em>optional</em>) &#8211; The probabilities associated with each entry in a.
+If not given the sample assumes a uniform distribution over all
+entries in a.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>samples</strong> &#8211; The generated random samples</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">1-D ndarray, shape (size,)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; If a is an int and less than zero, if a or p are not 1-dimensional,
+if a is an array-like of size 0, if p is not a vector of
+probabilities, if a and p have different lengths, or if
+replace=False and the sample size is greater than the population
+size</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#data_generator.formula.fake.randint" title="data_generator.formula.fake.randint"><code class="xref py py-func docutils literal"><span class="pre">randint()</span></code></a>, <code class="xref py py-func docutils literal"><span class="pre">shuffle()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">permutation()</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Generate a uniform random sample from np.arange(5) of size 3:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">array([0, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#This is equivalent to np.random.randint(0,5,3)</span>
+</pre></div>
+</div>
+<p>Generate a non-uniform random sample from np.arange(5) of size 3:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="go">array([3, 3, 0])</span>
+</pre></div>
+</div>
+<p>Generate a uniform random sample from np.arange(5) of size 3 without
+replacement:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">array([3,1,0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#This is equivalent to np.random.permutation(np.arange(5))[:3]</span>
+</pre></div>
+</div>
+<p>Generate a non-uniform random sample from np.arange(5) of size
+3 without replacement:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="go">array([2, 3, 0])</span>
+</pre></div>
+</div>
+<p>Any of the above can be repeated with an arbitrary array-like
+instead of just integers. For instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aa_milne_arr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pooh&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbit&#39;</span><span class="p">,</span> <span class="s1">&#39;piglet&#39;</span><span class="p">,</span> <span class="s1">&#39;Christopher&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">aa_milne_arr</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="go">array([&#39;pooh&#39;, &#39;pooh&#39;, &#39;pooh&#39;, &#39;Christopher&#39;, &#39;piglet&#39;],</span>
+<span class="go">      dtype=&#39;|S11&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.city">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">city</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.city" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake city formula. Example: &#8216;North Misty&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.company">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">company</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.company" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake company name formula. Example: &#8216;Haney Ltd&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.company_email">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">company_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.company_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake company email formula. Example: <a class="reference external" href="mailto:'garciavanessa&#37;&#52;&#48;myers&#46;com">'garciavanessa<span>&#64;</span>myers<span>&#46;</span>com</a>&#8216;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.country">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">country</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.country" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake country formula. Example: &#8216;Uzbekistan&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.country_code">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">country_code</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.country_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake country code formula. Example &#8216;AZ&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.date_time_between_dates">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">date_time_between_dates</code><span class="sig-paren">(</span><em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.date_time_between_dates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.first_name">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">first_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.first_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake first name formula. Example: &#8216;Matthew&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.first_name_female">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">first_name_female</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.first_name_female" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake female first name formula. Example: &#8216;Belinda&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.first_name_male">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">first_name_male</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.first_name_male" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake male first name formula. Example: &#8216;Jordan&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.free_email">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">free_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.free_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake free email formula. Example: <a class="reference external" href="mailto:'judithparsons&#37;&#52;&#48;gmail&#46;com">'judithparsons<span>&#64;</span>gmail<span>&#46;</span>com</a>&#8216;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.ipv4">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">ipv4</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.ipv4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake ipv4 formula. Example: &#8216;188.179.116.117&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.ipv6">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">ipv6</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.ipv6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake ipv6 formula. Example: &#8216;8262:139f:dffe:a8e7:8157:cb23:2590:48a1&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.job">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">job</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake job formula. Example: &#8216;Editorial assistant&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.last_name">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">last_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.last_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Fake last name formula. Example: &#8216;Walker&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.last_name_female">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">last_name_female</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.last_name_female" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake female last name formula. Example: &#8216;Calhoun&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.last_name_male">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">last_name_male</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.last_name_male" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake male last name formula. Example: &#8216;Goodwin&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.md5">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">md5</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.md5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.name">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake name formula. Example: &#8216;James Carter&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.name_female">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">name_female</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.name_female" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake female name formula. Example: &#8216;Lauren Perez&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.name_male">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">name_male</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.name_male" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake male name formula. Example: &#8216;Joseph Turner&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.phone_number">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">phone_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.phone_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake phone number formula. Example: &#8216;1-(235)142-8086&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.prefix">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">prefix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake name prefix formula. Example: &#8216;Mrs.&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.prefix_female">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">prefix_female</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.prefix_female" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake female name prefix formula. Example: &#8216;Mrs.&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.prefix_male">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">prefix_male</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.prefix_male" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake male name prefix formula. Example: &#8216;Mr.&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.randint">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">randint</code><span class="sig-paren">(</span><em>low</em>, <em>high=None</em>, <em>size=None</em>, <em>dtype='l'</em><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.randint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return random integers from <cite>low</cite> (inclusive) to <cite>high</cite> (exclusive).</p>
+<p>Return random integers from the &#8220;discrete uniform&#8221; distribution of
+the specified dtype in the &#8220;half-open&#8221; interval [<cite>low</cite>, <cite>high</cite>). If
+<cite>high</cite> is None (the default), then results are from [0, <cite>low</cite>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>low</strong> (<em>int</em>) &#8211; Lowest (signed) integer to be drawn from the distribution (unless
+<code class="docutils literal"><span class="pre">high=None</span></code>, in which case this parameter is one above the
+<em>highest</em> such integer).</li>
+<li><strong>high</strong> (<em>int</em><em>, </em><em>optional</em>) &#8211; If provided, one above the largest (signed) integer to be drawn
+from the distribution (see above for behavior if <code class="docutils literal"><span class="pre">high=None</span></code>).</li>
+<li><strong>size</strong> (<em>int</em><em> or </em><em>tuple of ints</em><em>, </em><em>optional</em>) &#8211; Output shape.  If the given shape is, e.g., <code class="docutils literal"><span class="pre">(m,</span> <span class="pre">n,</span> <span class="pre">k)</span></code>, then
+<code class="docutils literal"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">k</span></code> samples are drawn.  Default is None, in which case a
+single value is returned.</li>
+<li><strong>dtype</strong> (<em>dtype</em><em>, </em><em>optional</em>) &#8211; <p>Desired dtype of the result. All dtypes are determined by their
+name, i.e., &#8216;int64&#8217;, &#8216;int&#8217;, etc, so byteorder is not available
+and a specific precision may have different C types depending
+on the platform. The default value is &#8216;np.int&#8217;.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.11.0.</span></p>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> &#8211; <cite>size</cite>-shaped array of random integers from the appropriate
+distribution, or a single such random int if <cite>size</cite> not provided.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int or ndarray of ints</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-func docutils literal"><span class="pre">random.random_integers()</span></code></dt>
+<dd>similar to <cite>randint</cite>, only for the closed interval [<cite>low</cite>, <cite>high</cite>], and 1 is the lowest value if <cite>high</cite> is omitted. In particular, this other one is the one to use to generate uniformly distributed discrete non-integers.</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">array([1, 0, 0, 0, 1, 1, 0, 0, 1, 0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</span>
+</pre></div>
+</div>
+<p>Generate a 2 x 4 array of ints between 0 and 4, inclusive:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="go">array([[4, 0, 2, 1],</span>
+<span class="go">       [3, 2, 2, 0]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.safe_email">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">safe_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.safe_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake safe email formula. Example: <a class="reference external" href="mailto:'yorozco&#37;&#52;&#48;example&#46;com">'yorozco<span>&#64;</span>example<span>&#46;</span>com</a>&#8216;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.secondary_address">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">secondary_address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.secondary_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake secondary address formula. Example: &#8216;Apt. 798&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.sentence">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">sentence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.sentence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.ssn">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">ssn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.ssn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake ssn formula. Example: &#8216;078-08-6469&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.state">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake state formula. Example: &#8216;Maine&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.state_abbr">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">state_abbr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.state_abbr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake state abbreviation formula. Example: &#8216;CA&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.street_address">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">street_address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.street_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake street address formula. Example: &#8216;43363 Davis Circles Apt. 871&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.street_name">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">street_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.street_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake street name formula. Example: &#8216;Dixon Summit&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.street_suffix">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">street_suffix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.street_suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake street suffix formula. Example: &#8216;Harbor&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.suffix">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">suffix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake name suffix formula. Example: &#8216;PhD&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.suffix_female">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">suffix_female</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.suffix_female" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake female name suffix formula. Example: &#8216;PhD&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.suffix_male">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">suffix_male</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.suffix_male" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake male name suffix formula. Example: &#8216;Jr.&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.url">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake url formula. Example: &#8216;<a class="reference external" href="http://www.mendez.com/">http://www.mendez.com/</a>&#8216;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.user_agent">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">user_agent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.user_agent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.zipcode">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">zipcode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.zipcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake zip code formula. Example: &#8216;09658&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="data_generator.formula.fake.zipcode_plus4">
+<code class="descclassname">data_generator.formula.fake.</code><code class="descname">zipcode_plus4</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_generator.formula.fake.zipcode_plus4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake zip code plus 4 additional digits formula. Example: &#8216;79879-8011&#8217;</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="data_generator.html" class="btn btn-neutral" title="Data Generator API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
