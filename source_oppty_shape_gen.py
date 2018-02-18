@@ -88,7 +88,7 @@ def run(source_file_name, output_file_name):
     data_gen.add_constant_column('IsClosed', 'true')
 
 
-    data_gen.add_formula_column('RecordType.DeveloperName', formula=lambda: choice(['SimpleOpportunity', 'ChannelPartner'], p=[1, 0]))
+    data_gen.add_formula_column('RecordType.DeveloperName', formula=lambda: choice(['SimpleOpportunity', 'ChannelPartner'], p=[.70, .30]))
 
 
     # generate opportunity type
