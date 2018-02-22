@@ -75,7 +75,7 @@ def event_subject_simple():
 
 
 def event_subtype():
-    return choice(['Event','Email','Call'])
+    return 'Event'
 
 
 def event_call_duration():
