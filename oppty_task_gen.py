@@ -38,7 +38,7 @@ def run(batch_id, source_file_name, output_file_name, reference_datetime=today):
     data_gen.add_formula_column('External_Id__c', formula=lambda: 'W_Sales_Task.' + str(data_gen.current_row + 1))
 
 
-    data_gen.add_formula_column('ReportType.DeveloperName', formula=task.oppty_task_subtype)
+    data_gen.add_formula_column('RecordType.DeveloperName', formula=task.oppty_task_subtype)
     data_gen.add_formula_column('CallDurationInSeconds', formula=task.task_call_duration)
     data_gen.add_formula_column('CallDisposition', formula=task.task_call_disposition)
     data_gen.add_formula_column('CallType', formula=task.task_call_type)
