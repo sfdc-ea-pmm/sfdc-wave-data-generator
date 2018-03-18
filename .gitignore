@@ -18,3 +18,5 @@ tmtagsHistory
 *.sublime-workspace
 .bundle
 *.csv
+
+__pycache__/
