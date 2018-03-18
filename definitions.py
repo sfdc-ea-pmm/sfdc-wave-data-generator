@@ -228,7 +228,7 @@ deal_size = {
 # stageNames
 stagename = {
     'Qualification': 'Qualification',
-    'Needs Analysis': 'Needs Analysis',
+    'Discovery': 'Discovery',
     'Proposal/Quote': 'Proposal/Quote',
     'Negotiation': 'Negotiation',
     'Closed Won': 'Closed Won',
@@ -236,7 +236,7 @@ stagename = {
 }
 
 # stageNames
-stage_name = ['Qualification', 'Needs Analysis', 'Proposal/Quote', 'Negotiation', 'Closed Won', 'Closed Lost']
+stage_name = ['Qualification', 'Discovery', 'Proposal/Quote', 'Negotiation', 'Closed Won', 'Closed Lost']
 
 # probability
 probabilities = [20, 35, 75, 90, 100, 0]

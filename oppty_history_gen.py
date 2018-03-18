@@ -43,7 +43,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
 
     data_gen.apply_transformations()
 
-    stages = ['Qualification', 'Needs Analysis', 'Proposal/Quote', 'Negotiation']
+    stages = ['Qualification', 'Discovery', 'Proposal/Quote', 'Negotiation']
     forecast_categories = ['BestCase', 'Pipeline', 'Commit']
 
     pipe_bucket = ['No Change', 'Reopen', 'Expand', 'Reduce', 'Moved Out', 'Moved In', 'Stage Change']
