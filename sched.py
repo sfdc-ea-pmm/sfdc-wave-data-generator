@@ -1,3 +1,4 @@
+import fsl_data_gen
 import sales_data_gen
 import services_data_gen
 
@@ -12,5 +13,9 @@ def scheduled_sales_data_gen():
 @scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=10)
 def scheduled_services_data_gen():
     services_data_gen.run()
+
+@scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=11)
+def scheduled_fsl_data_gen():
+    fsl_data_gen.run()
 
 scheduler.start()

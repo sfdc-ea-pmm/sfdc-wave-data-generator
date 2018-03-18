@@ -1,0 +1,4 @@
+"Id","Name","OperatingHoursId","IsActive","City","State","Country"
+"0Hh6A000000YOw4SAG","*San Francisco","0OH6A000000YP0oWAG","true","San Francisco","CA","USA"
+"0Hh6A000000YOw5SAG","Los Angeles","0OH6A000000YP0pWAG","true","Los Angeles","CA","USA"
+"0Hh6A000000YOw6SAG","Acme Partners Territory","0OH6A000000YP0oWAG","true","San Francisco","CA","United States"

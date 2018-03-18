@@ -837,6 +837,29 @@ class Dataset(object):
     def __init__(self, data):
         self.data = data
 
+    def dict(self, key_column_name, value_column_name):
+        """Creates a dictionary with the given key and value columns
+
+        Parameters
+        ----------
+        key_column_name : str
+            The name of the column to use as the key of a dictionary entry.
+        value_column_name: str
+            The name of the column to use as the value of a dictionary entry.
+
+        Returns
+        -------
+        dict
+            A dictionary where the key and value are the specified columns for each row
+            in the dataset.
+        """
+        map = {}
+        for row in self.data:
+            key = row.get(key_column_name)
+            value = row.get(value_column_name)
+            map[key] = value
+        return map
+
     def group_by(self, column_name):
         """Creates a dictionary grouped by the given column.
 
