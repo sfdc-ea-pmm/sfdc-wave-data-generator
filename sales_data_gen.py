@@ -1,23 +1,24 @@
 import copy_data_file
 import dateutil.parser
 import definitions
-import oppty_account_cleanup
-import oppty_account_gen
-import oppty_case_gen
-import oppty_contact_gen
-import oppty_event_gen
-import oppty_history_gen
-import oppty_gen
-import oppty_lead_gen
-import oppty_line_item_gen
-import oppty_product_gen
-import oppty_forecasting_quota_gen
-import oppty_forecasting_user_gen
-import oppty_quota_gen
-import oppty_shape_gen
-import oppty_task_gen
-import oppty_user_gen
 import os
+
+from sales import oppty_account_cleanup
+from sales import oppty_account_gen
+from sales import oppty_case_gen
+from sales import oppty_contact_gen
+from sales import oppty_event_gen
+from sales import oppty_history_gen
+from sales import oppty_gen
+from sales import oppty_lead_gen
+from sales import oppty_line_item_gen
+from sales import oppty_product_gen
+from sales import oppty_forecasting_quota_gen
+from sales import oppty_forecasting_user_gen
+from sales import oppty_quota_gen
+from sales import oppty_shape_gen
+from sales import oppty_task_gen
+from sales import oppty_user_gen
 
 from datetime import date
 from datetime import datetime

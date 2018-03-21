@@ -1,22 +1,23 @@
-import case_account_gen
-import case_agent_work_gen
-import case_article_gen
-import case_contact_gen
-import case_event_gen
-import case_gen
-import case_history_gen
-import case_knowledge_article_gen
-import case_knowledge_article_data_cat_gen
-import case_knowledge_article_version_gen
-import case_knowledge_article_viewstat_gen
-import case_knowledge_article_votestat_gen
-import case_live_chat_event_gen
-import case_live_chat_gen
-import case_oppty_gen
-import case_shape_gen
-import case_task_gen
-import case_user_gen
-import case_user_presence_gen
+from service import case_account_gen
+from service import case_agent_work_gen
+from service import case_article_gen
+from service import case_contact_gen
+from service import case_event_gen
+from service import case_gen
+from service import case_history_gen
+from service import case_knowledge_article_gen
+from service import case_knowledge_article_data_cat_gen
+from service import case_knowledge_article_version_gen
+from service import case_knowledge_article_viewstat_gen
+from service import case_knowledge_article_votestat_gen
+from service import case_live_chat_event_gen
+from service import case_live_chat_gen
+from service import case_oppty_gen
+from service import case_shape_gen
+from service import case_task_gen
+from service import case_user_gen
+from service import case_user_presence_gen
+
 import copy_data_file
 import dateutil.parser
 import definitions
