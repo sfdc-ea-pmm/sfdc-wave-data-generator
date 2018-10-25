@@ -13,7 +13,7 @@ def run(batch_id, source_file_name, output_file_name):
     data_gen.load_source_file(source_file_name)
 
     data_gen.write(output_file_name, columns=[
-        'External_Id__c',
+        'External_ID__c',
         'Name',
     ])
 

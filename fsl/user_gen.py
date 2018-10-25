@@ -19,7 +19,7 @@ def run(batch_id, source_file_name, output_file_name, source_profiles):
     data_gen.apply_transformations()
 
     data_gen.write(output_file_name, columns=[
-        'External_Id__c',
+        'External_ID__c',
         'FirstName',
         'LastName',
         'Alias',
@@ -33,7 +33,7 @@ def run(batch_id, source_file_name, output_file_name, source_profiles):
         'UserPermissionsCallCenterAutoLogin',
         #'UserPermissionsChatterAnswersUser',
         'UserPermissionsInteractionUser',
-        'UserPermissionsJigsawProspectingUser',
+        #'UserPermissionsJigsawProspectingUser',
         'UserPermissionsKnowledgeUser',
         'UserPermissionsLiveAgentUser',
         'UserPermissionsMarketingUser',
@@ -78,7 +78,7 @@ def run(batch_id, source_file_name, output_file_name, source_profiles):
         'UserPreferencesHideS1BrowserUI',
         'UserPreferencesHideSecondChatterOnboardingSplash',
         'UserPreferencesHideSfxWelcomeMat',
-        'UserPreferencesJigsawListUser',
+        #'UserPreferencesJigsawListUser',
         'UserPreferencesLightningExperiencePreferred',
         'UserPreferencesPathAssistantCollapsed',
         'UserPreferencesPreviewLightning',

@@ -18,14 +18,14 @@ def run(batch_id, source_file_name, output_file_name, source_operating_hours, re
 
     data_gen.add_constant_column('CreatedDate__c', reference_datetime.isoformat(sep=' '))
 
-    operating_hours = data_gen.load_dataset("OperatingHours", source_operating_hours, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    operating_hours = data_gen.load_dataset("OperatingHours", source_operating_hours, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
 
     data_gen.add_map_column('OperatingHours.External_Id__c', 'OperatingHoursId', operating_hours)
 
     data_gen.apply_transformations()
 
     data_gen.write(output_file_name, columns=[
-        'External_Id__c',
+        'External_ID__c',
         'OperatingHours.External_Id__c',
         'StartTime',
         'EndTime'

@@ -51,21 +51,22 @@ def run():
     profile_file = 'Profile.csv'
 
     # add external ids to source files
-    add_external_id.run(source_path + account_file, 'W_FSL_Account', output_path + account_file)
-    add_external_id.run(source_path + assigned_resource_file, 'W_FSL_AssignedResource', output_path + assigned_resource_file)
-    add_external_id.run(source_path + case_file, 'W_FSL_Case', output_path + case_file)
-    add_external_id.run(source_path + operating_hours_file, 'W_FSL_OperatingHours', output_path + operating_hours_file)
-    add_external_id.run(source_path + pricebook_entry_file, 'W_FSL_PricebookEntry', output_path + pricebook_entry_file)
-    add_external_id.run(source_path + product_file, 'W_FSL_Product', output_path + product_file)
+    add_external_id.run(source_path + account_file, 'Account', output_path + account_file)
+    add_external_id.run(source_path + assigned_resource_file, 'AssignedResource', output_path + assigned_resource_file)
+    add_external_id.run(source_path + case_file, 'Case', output_path + case_file)
+    add_external_id.run(source_path + operating_hours_file, 'OperatingHours', output_path + operating_hours_file)
+    add_external_id.run(source_path + pricebook_entry_file, 'PricebookEntry', output_path + pricebook_entry_file)
+    add_external_id.run(source_path + product_file, 'Product', output_path + product_file)
     add_external_id.run(source_path + product_consumed_file, 'W_FSL_ProductConsumed', output_path + product_consumed_file)
-    add_external_id.run(source_path + resource_absence_file, 'W_FSL_ResourceAbsence', output_path + resource_absence_file)
-    add_external_id.run(source_path + service_appointment_file, 'W_FSL_ServiceAppointment', output_path + service_appointment_file)
-    add_external_id.run(source_path + service_resource_file, 'W_FSL_ServiceResource', output_path + service_resource_file)
-    add_external_id.run(source_path + service_territory_file, 'W_FSL_ServiceTerritory', output_path + service_territory_file)
-    add_external_id.run(source_path + time_slot_file, 'W_FSL_TimeSlot', output_path + time_slot_file)
-    add_external_id.run(source_path + user_file, 'W_FSL_User', output_path + user_file)
-    add_external_id.run(source_path + work_order_file, 'W_FSL_WorkOrder', output_path + work_order_file)
-    add_external_id.run(source_path + work_type_file, 'W_FSL_WorkType', output_path + work_type_file)
+    add_external_id.run(source_path + resource_absence_file, 'ResourceAbsence', output_path + resource_absence_file)
+    add_external_id.run(source_path + service_appointment_file, 'ServiceAppointment', output_path + service_appointment_file)
+    add_external_id.run(source_path + service_resource_file, 'ServiceResource', output_path + service_resource_file)
+    add_external_id.run(source_path + service_territory_file, 'ServiceTerritory', output_path + service_territory_file)
+    add_external_id.run(source_path + time_slot_file, 'TimeSlot', output_path + time_slot_file)
+    add_external_id.run(source_path + user_file, 'User', output_path + user_file)
+    add_external_id.run(source_path + work_order_file, 'WorkOrder', output_path + work_order_file)
+    add_external_id.run(source_path + work_type_file, 'WorkType', output_path + work_type_file)
+
 
     # generate product consumed
     product_consumed_gen.run(batch_id, output_path + product_consumed_file, output_path + product_consumed_file,
@@ -80,17 +81,21 @@ def run():
                                 output_path + account_file, output_path + service_resource_file,
                                 output_path + service_territory_file, output_path + work_order_file, today_datetime)
 
+    assigned_resource_gen.updateCreatedDate(output_path + assigned_resource_file, output_path + assigned_resource_file,
+                                            output_path + service_appointment_file, today_datetime)
+
     # generate resource absences
     resource_absence_gen.run(batch_id, output_path + resource_absence_file, output_path + resource_absence_file,
-                             output_path + service_resource_file, delta, today_datetime)
+                             output_path + service_resource_file, delta)
 
     # generate work orders
     work_order_gen.run(batch_id, output_path + work_order_file, output_path + work_order_file, output_path + case_file,
-                       output_path + account_file, output_path + work_type_file, today_datetime)
+                       output_path + account_file, output_path + work_type_file, output_path + service_appointment_file,
+                       today_datetime)
 
     # generate time slots
-    time_slot_gen.run(batch_id, output_path + time_slot_file, output_path + time_slot_file,
-                      output_path + operating_hours_file, today_datetime)
+    #time_slot_gen.run(batch_id, output_path + time_slot_file, output_path + time_slot_file,
+    #                  output_path + operating_hours_file, today_datetime)
 
     # generate service resources
     service_resource_gen.run(batch_id, output_path + service_resource_file, output_path + service_resource_file,
@@ -109,11 +114,11 @@ def run():
     user_gen.run(batch_id, output_path + user_file, output_path + user_file, source_path + profile_file)
 
     # generate service territories
-    service_territory_gen.run(batch_id, output_path + service_territory_file, output_path + service_territory_file,
-                              output_path + operating_hours_file)
+    #service_territory_gen.run(batch_id, output_path + service_territory_file, output_path + service_territory_file,
+    #                          output_path + operating_hours_file)
 
     # generate operating hours
-    operating_hours_gen.run(batch_id, output_path + operating_hours_file, output_path + operating_hours_file)
+    #operating_hours_gen.run(batch_id, output_path + operating_hours_file, output_path + operating_hours_file)
 
     # generate pricebook entries
     pricebook_entry_gen.run(batch_id, output_path + pricebook_entry_file, output_path + pricebook_entry_file,
@@ -121,6 +126,9 @@ def run():
 
     # generate product
     product_gen.run(batch_id, output_path + product_file, output_path + product_file)
+
+    product_consumed_gen.update(output_path + product_consumed_file, output_path + product_consumed_file,
+                                output_path + work_order_file)
 
     # copy all files to the latest folder
     latest_output_path = 'fsl/data/output/latest/'
@@ -133,14 +141,14 @@ def run():
     copy_data_file.run(output_path + service_appointment_file, latest_output_path + service_appointment_file)
     copy_data_file.run(output_path + resource_absence_file, latest_output_path + resource_absence_file)
     copy_data_file.run(output_path + work_order_file, latest_output_path + work_order_file)
-    copy_data_file.run(output_path + time_slot_file, latest_output_path + time_slot_file)
+    #copy_data_file.run(output_path + time_slot_file, latest_output_path + time_slot_file)
     copy_data_file.run(output_path + service_resource_file, latest_output_path + service_resource_file)
     copy_data_file.run(output_path + case_file, latest_output_path + case_file)
     copy_data_file.run(output_path + account_file, latest_output_path + account_file)
     copy_data_file.run(output_path + work_type_file, latest_output_path + work_type_file)
     copy_data_file.run(output_path + user_file, latest_output_path + user_file)
-    copy_data_file.run(output_path + service_territory_file, latest_output_path + service_territory_file)
-    copy_data_file.run(output_path + operating_hours_file, latest_output_path + operating_hours_file)
+    #copy_data_file.run(output_path + service_territory_file, latest_output_path + service_territory_file)
+    #copy_data_file.run(output_path + operating_hours_file, latest_output_path + operating_hours_file)
     copy_data_file.run(output_path + pricebook_entry_file, latest_output_path + pricebook_entry_file)
     copy_data_file.run(output_path + product_file, latest_output_path + product_file)
 

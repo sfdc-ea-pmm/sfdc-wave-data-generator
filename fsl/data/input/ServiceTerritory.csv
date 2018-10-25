@@ -1,4 +1,4 @@
-"Id","Name","OperatingHoursId","IsActive","City","State","Country"
-"0Hh6A000000YOw4SAG","*San Francisco","0OH6A000000YP0oWAG","true","San Francisco","CA","USA"
-"0Hh6A000000YOw5SAG","Los Angeles","0OH6A000000YP0pWAG","true","Los Angeles","CA","USA"
-"0Hh6A000000YOw6SAG","Acme Partners Territory","0OH6A000000YP0oWAG","true","San Francisco","CA","United States"
+"Id","External_ID__c","Name","OperatingHoursId","IsActive","City","State","Country"
+"0Hh0b000000LFOFCA4","SvcTerritory.003","Acme Partners Territory","0OH0b000000LFb9GAG","true","San Francisco","CA","United States"
+"0Hh0b000000LFOGCA4","SvcTerritory.002","Los Angeles","0OH0b000000LFbAGAW","true","Los Angeles","CA","USA"
+"0Hh0b000000LFOECA4","SvcTerritory.001","*San Francisco","0OH0b000000LFb9GAG","true","San Francisco","CA","USA"

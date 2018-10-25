@@ -12,14 +12,14 @@ def run(batch_id, source_file_name, output_file_name, source_accounts):
     # load source file
     data_gen.load_source_file(source_file_name)
 
-    accounts = data_gen.load_dataset("Accounts", source_accounts, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    accounts = data_gen.load_dataset("Accounts", source_accounts, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
 
     data_gen.add_map_column('Account.External_Id__c', 'AccountId', accounts)
 
     data_gen.apply_transformations()
 
     data_gen.write(output_file_name, columns=[
-        'External_Id__c',
+        'External_ID__c',
         'Account.External_Id__c',
         'Subject'
     ])

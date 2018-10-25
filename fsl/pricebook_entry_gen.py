@@ -12,7 +12,7 @@ def run(batch_id, source_file_name, output_file_name, source_products):
     # load source file
     data_gen.load_source_file(source_file_name)
 
-    products = data_gen.load_dataset("Products", source_products, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    products = data_gen.load_dataset("Products", source_products, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
     data_gen.add_map_column('Product2.External_Id__c', 'Product2Id', products)
 
     data_gen.add_constant_column('Pricebook2.Name', 'Standard Price Book')

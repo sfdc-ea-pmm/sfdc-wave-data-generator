@@ -50,26 +50,30 @@ def run(batch_id, source_file_name, output_file_name, source_accounts, source_se
 
     data_gen.add_copy_column('CreatedDate__c', 'EarliestStartTime')
 
-    accounts = data_gen.load_dataset("Accounts", source_accounts, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    accounts = data_gen.load_dataset("Accounts", source_accounts, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
 
     data_gen.add_map_column('Account.External_Id__c', 'AccountId', accounts)
 
-    service_resources = data_gen.load_dataset("ServiceResources", source_service_resources, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    service_resources = data_gen.load_dataset("ServiceResources", source_service_resources, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
 
     data_gen.add_map_column('ServiceResource.External_Id__c', 'FSLDemoTools_Service_Resource__c', service_resources)
 
-    service_territories = data_gen.load_dataset("ServiceTerritories", source_service_territories, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    service_territories = data_gen.load_dataset("ServiceTerritories", source_service_territories, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
 
     data_gen.add_map_column('ServiceTerritory.External_Id__c', 'ServiceTerritoryId', service_territories)
 
-    work_orders = data_gen.load_dataset("WorkOrders", source_work_orders, ['Id', 'External_Id__c']).dict('Id', 'External_Id__c')
+    work_orders = data_gen.load_dataset("WorkOrders", source_work_orders, ['Id', 'External_ID__c']).dict('Id', 'External_ID__c')
 
     data_gen.add_map_column('WorkOrder.External_Id__c', 'ParentRecordId', work_orders)
 
     data_gen.apply_transformations()
 
+    data_gen.filter(lambda cv: cv['WorkOrder.External_Id__c'].startswith('WO.'))
+
+    data_gen.apply_transformations()
+
     data_gen.write(output_file_name, columns=[
-        'External_Id__c',
+        'External_ID__c',
         'CreatedDate__c',
         'ServiceResource.External_Id__c',
         'ServiceTerritory.External_Id__c',
