@@ -61,6 +61,7 @@ class DataGenerator(object):
     @row_count.setter
     def row_count(self, row_count):
         self._row_count = row_count
+        self.rows = x = [[] for i in range(self._row_count)]
 
     def load_source_file(self, source_file_name, source_column_names=None):
         """Loads a CSV file to be used as the source data to add columns and apply column transformations to.
@@ -421,7 +422,10 @@ class DataGenerator(object):
 
         # add new column names
         new_column_names = set()
-        max_index = max(self.column_names.values())
+        max_index = 0
+        if len(self.column_names) > 0:
+            max_index = max(self.column_names.values())
+
         for column_generator in self.pending_column_generators:
             if column_generator.column_name not in self.column_names:
                 max_index += 1
