@@ -28,4 +28,3 @@ s3transfer==0.1.10
 six==1.11.0
 tzlocal==1.4
 uritemplate==3.0.0
-honcho==1.0.1
