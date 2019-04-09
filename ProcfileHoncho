@@ -1,2 +1,1 @@
-python: sh run_server.sh
 django: gunicorn server.wsgi --log-file -
