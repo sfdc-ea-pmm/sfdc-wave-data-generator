@@ -1,2 +1,2 @@
 python: sh run_server.sh
-django: gunicorn server.wsgi -b 0.0.0.0:5000 --log-file -
+django: gunicorn -b 0.0.0.0:5000 server.wsgi --log-file -
