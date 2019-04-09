@@ -1,2 +1,2 @@
-web: gunicorn server.wsgi --log-file -
+web: honcho -f ProcfileHoncho start
 sched: python sched.py
