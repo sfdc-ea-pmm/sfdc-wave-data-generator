@@ -8,6 +8,27 @@ from rest_framework.response import Response
 from data_generator import DataGenerator
 from data_generator.formula import fake
 
+from api.models import DatasetManager
+
+
+@api_view(['GET', 'POST'])
+@parser_classes((JSONParser,))
+@renderer_classes((JSONRenderer,))
+def datasets(request):
+    if 'type' in request.data:
+        dataset_type = request.data['type']
+        selected_filters = None
+        if 'filters' in request.data:
+            selected_filters = request.data['filters']
+        columns = None
+        if 'columns' in request.data:
+            columns = request.data['columns']
+        count = 5
+        if 'count' in request.data:
+            count = request.data['count']
+        return Response(DatasetManager().get_dataset(dataset_type, selected_filters, columns, count))
+    else:
+        return Response(DatasetManager().get_datasets())
 
 @api_view(['GET', 'POST'])
 @parser_classes((JSONParser,))
