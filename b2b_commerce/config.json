@@ -1,0 +1,79 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "edgAccount.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastActivityDate",
+        "LastModifiedDate",
+        "LastReferencedDate",
+        "LastViewedDate",
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgContact.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastActivityDate",
+        "LastModifiedDate",
+        "LastReferencedDate",
+        "LastCURequestDate",
+        "LastCUUpdateDate",
+        "LastViewedDate",
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgOrder.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastActivityDate",
+        "LastModifiedDate",
+        "LastReferencedDate",
+        "LastViewedDate",
+        "ccrz__OrderDate__c",
+        "ccrz__RequestDate__c",
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgOrderItem.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastActivityDate",
+        "LastModifiedDate",
+        "ccrz__Next_Subscription_Date__c",
+        "ccrz__RequestDate__c",
+        "ccrz__Subscription_Start_Date__c",
+        "ccrz__Subscription_End_Date__c",
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgProduct.csv",
+      "dateFields": [
+        "CreatedDate",
+        "ccrz__EndDate__c",
+        "LastActivityDate",
+        "LastModifiedDate",
+        "LastReferencedDate",
+        "LastViewedDate",
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgAccountGroup.csv"
+    },
+    {
+      "fileName": "edgCategory.csv"
+    },
+    {
+      "fileName": "edgProductCategory.csv"
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgOrder.csv",
+    "fieldName": "ccrz__OrderDate__c"
+  }
+}
