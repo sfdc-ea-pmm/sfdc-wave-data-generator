@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from data_generator import DataGenerator
 from data_generator.formula import fake
 
-from api.models import DatasetManager
+from api.models import dataset_manager
 
 
 @api_view(['GET', 'POST'])
@@ -26,9 +26,9 @@ def datasets(request):
         count = 5
         if 'count' in request.data:
             count = request.data['count']
-        return Response(DatasetManager().get_dataset(dataset_type, selected_filters, columns, count))
+        return Response(dataset_manager.get_dataset(dataset_type, selected_filters, columns, count))
     else:
-        return Response(DatasetManager().get_datasets())
+        return Response(dataset_manager.get_datasets())
 
 @api_view(['GET', 'POST'])
 @parser_classes((JSONParser,))

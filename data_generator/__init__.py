@@ -61,7 +61,10 @@ class DataGenerator(object):
     @row_count.setter
     def row_count(self, row_count):
         self._row_count = row_count
-        self.rows = x = [[] for i in range(self._row_count)]
+        if not self.rows:
+            self.rows = [[] for i in range(self._row_count)]
+        else:
+            self.rows = self.rows[:self.row_count]
 
     def load_source_file(self, source_file_name, source_column_names=None):
         """Loads a CSV file to be used as the source data to add columns and apply column transformations to.
