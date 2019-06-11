@@ -1,0 +1,36 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "edgAccount.csv"
+    },
+    {
+      "fileName": "edgCampaign.csv",
+      "dateFields": [
+        "EndDate",
+        "StartDate"
+      ]
+    },
+    {
+      "fileName": "edgCampaignInfluence.csv"
+    },
+    {
+      "fileName": "edgCampaignInfluenceModel.csv"
+    },
+    {
+      "fileName": "edgContact.csv"
+    },
+    {
+      "fileName": "edgOpportunity.csv",
+      "dateFields": [
+        "CloseDate"
+      ]
+    },
+    {
+      "fileName": "edgRecordType.csv"
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgCampaign.csv",
+    "fieldName": "StartDate"
+  }
+}

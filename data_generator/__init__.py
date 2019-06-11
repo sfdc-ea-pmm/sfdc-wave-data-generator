@@ -61,10 +61,6 @@ class DataGenerator(object):
     @row_count.setter
     def row_count(self, row_count):
         self._row_count = row_count
-        if not self.rows:
-            self.rows = [[] for i in range(self._row_count)]
-        else:
-            self.rows = self.rows[:self.row_count]
 
     def load_source_file(self, source_file_name, source_column_names=None):
         """Loads a CSV file to be used as the source data to add columns and apply column transformations to.
@@ -425,10 +421,7 @@ class DataGenerator(object):
 
         # add new column names
         new_column_names = set()
-        max_index = -1
-        if len(self.column_names) > 0:
-            max_index = max(self.column_names.values())
-
+        max_index = max(self.column_names.values())
         for column_generator in self.pending_column_generators:
             if column_generator.column_name not in self.column_names:
                 max_index += 1
@@ -773,31 +766,21 @@ class DataGenerator(object):
             client.put_object_acl(ACL='public-read', Bucket=s3_bucket_name, Key=output_file_name)
         return files
 
-    def row_to_column_values(self, row, columns=None):
+    def row_to_column_values(self, row):
         """Convert a row of data into a dictionary of column names to values.
 
         Parameters
         ----------
         row: list
             The row of data to convert.
-        columns: list
-            The list of columns to include
 
         Returns
         -------
         dict
             A dictionary of column names to values.
         """
-        column_order = OrderedDict()
-        if columns is None:
-            column_order = self.column_names
-        else:
-            # use provided columns and column order
-            for column_name in columns:
-                column_order[column_name] = self.column_names[column_name]
-
         column_values = {}
-        for column_name, index in column_order.items():
+        for column_name, index in self.column_names.items():
             if index < len(row):
                 column_values[column_name] = row[index]
         return column_values
@@ -1046,7 +1029,7 @@ class MapColumnGenerator(ColumnGenerator):
 class FormulaColumnGenerator(ColumnGenerator):
     """Generate a value by applying the given formula function.
 
-    This generator must provide a callable function. This callable formula function must either accept
+    This generator must provide a callable function. This callable formulat function must either accept 
     no parameters or a single parameter consisting of column_values, a dictionary of column names to 
     their values for the current row.
     """

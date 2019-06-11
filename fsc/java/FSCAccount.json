@@ -1,0 +1,339 @@
+{
+  "fileFormat": {
+    "charsetName": "UTF-8",
+    "fieldsDelimitedBy": ",",
+    "linesTerminatedBy": "\n"
+  },
+  "objects": [
+    {
+      "connector": "CSV",
+      "fullyQualifiedName": "FSCAccount_csv",
+      "label": "FSCAccount.csv",
+      "name": "FSCAccount_csv",
+      "fields": [
+        {
+          "fullyQualifiedName": "ACCOUNTNUMBER",
+          "name": "ACCOUNTNUMBER",
+          "type": "Text",
+          "label": "ACCOUNTNUMBER"
+        },
+        {
+          "fullyQualifiedName": "AGEBUCKET",
+          "name": "AGEBUCKET",
+          "type": "Text",
+          "label": "AGEBUCKET"
+        },
+        {
+          "fullyQualifiedName": "AUA",
+          "name": "AUA",
+          "type": "Numeric",
+          "label": "AUA",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "AUM",
+          "name": "AUM",
+          "type": "Numeric",
+          "label": "AUM",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "BILLINGPOSTALCODE",
+          "name": "BILLINGPOSTALCODE",
+          "type": "Text",
+          "label": "BILLINGPOSTALCODE"
+        },
+        {
+          "fullyQualifiedName": "BILLINGSTATE",
+          "name": "BILLINGSTATE",
+          "type": "Text",
+          "label": "BILLINGSTATE"
+        },
+        {
+          "fullyQualifiedName": "CLIENTCATEGORY",
+          "name": "CLIENTCATEGORY",
+          "type": "Text",
+          "label": "CLIENTCATEGORY"
+        },
+        {
+          "fullyQualifiedName": "CLIENTCATEGORYCUSTOM",
+          "name": "CLIENTCATEGORYCUSTOM",
+          "type": "Text",
+          "label": "CLIENTCATEGORYCUSTOM"
+        },
+        {
+          "fullyQualifiedName": "HELDAWAY",
+          "name": "HELDAWAY",
+          "type": "Numeric",
+          "label": "HELDAWAY",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "ID",
+          "name": "ID",
+          "type": "Text",
+          "label": "ID"
+        },
+        {
+          "fullyQualifiedName": "INVESTMENTEXPERIENCE",
+          "name": "INVESTMENTEXPERIENCE",
+          "type": "Text",
+          "label": "INVESTMENTEXPERIENCE"
+        },
+        {
+          "fullyQualifiedName": "INVESTMENTOBJECTIVES",
+          "name": "INVESTMENTOBJECTIVES",
+          "type": "Text",
+          "label": "INVESTMENTOBJECTIVES"
+        },
+        {
+          "fullyQualifiedName": "LASTINTERACTION",
+          "name": "LASTINTERACTION",
+          "type": "Date",
+          "label": "LASTINTERACTION",
+          "format": "yyyy-MM-dd"
+        },
+        {
+          "fullyQualifiedName": "LASTREVIEW",
+          "name": "LASTREVIEW",
+          "type": "Date",
+          "label": "LASTREVIEW",
+          "format": "yyyy-MM-dd"
+        },
+        {
+          "fullyQualifiedName": "MARKETINGSEGMENT",
+          "name": "MARKETINGSEGMENT",
+          "type": "Text",
+          "label": "MARKETINGSEGMENT"
+        },
+        {
+          "fullyQualifiedName": "NAME",
+          "name": "NAME",
+          "type": "Text",
+          "label": "NAME"
+        },
+        {
+          "fullyQualifiedName": "NETWORTH",
+          "name": "NETWORTH",
+          "type": "Numeric",
+          "label": "NETWORTH",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 1,
+          "format": "0.0",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "NETWORTHBUCKET",
+          "name": "NETWORTHBUCKET",
+          "type": "Text",
+          "label": "NETWORTHBUCKET"
+        },
+        {
+          "fullyQualifiedName": "NEXTREVIEW",
+          "name": "NEXTREVIEW",
+          "type": "Date",
+          "label": "NEXTREVIEW",
+          "format": "yyyy-MM-dd"
+        },
+        {
+          "fullyQualifiedName": "OWNERNAME",
+          "name": "OWNERNAME",
+          "type": "Text",
+          "label": "OWNERNAME"
+        },
+        {
+          "fullyQualifiedName": "PHONE",
+          "name": "PHONE",
+          "type": "Text",
+          "label": "PHONE"
+        },
+        {
+          "fullyQualifiedName": "PRIMARYCONTACTAGE",
+          "name": "PRIMARYCONTACTAGE",
+          "type": "Numeric",
+          "label": "PRIMARYCONTACTAGE",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "PRIMARYCONTACTANNUALINCOME",
+          "name": "PRIMARYCONTACTANNUALINCOME",
+          "type": "Numeric",
+          "label": "PRIMARYCONTACTANNUALINCOME",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 1,
+          "format": "0.0",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "PRIMARYCONTACTEMAIL",
+          "name": "PRIMARYCONTACTEMAIL",
+          "type": "Text",
+          "label": "PRIMARYCONTACTEMAIL"
+        },
+        {
+          "fullyQualifiedName": "PRIMARYCONTACTGENDER",
+          "name": "PRIMARYCONTACTGENDER",
+          "type": "Text",
+          "label": "PRIMARYCONTACTGENDER"
+        },
+        {
+          "fullyQualifiedName": "RECORDTYPENAME",
+          "name": "RECORDTYPENAME",
+          "type": "Text",
+          "label": "RECORDTYPENAME"
+        },
+        {
+          "fullyQualifiedName": "RELATIONSHIPSTARTDATE",
+          "name": "RELATIONSHIPSTARTDATE",
+          "type": "Date",
+          "label": "RELATIONSHIPSTARTDATE",
+          "format": "yyyy-MM-dd"
+        },
+        {
+          "fullyQualifiedName": "SERVICEMODEL",
+          "name": "SERVICEMODEL",
+          "type": "Text",
+          "label": "SERVICEMODEL"
+        },
+        {
+          "fullyQualifiedName": "TOTALAUMJOINTOWNER",
+          "name": "TOTALAUMJOINTOWNER",
+          "type": "Numeric",
+          "label": "TOTALAUMJOINTOWNER",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 1,
+          "format": "0.0",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "TOTALAUMPRIMARYOWNER",
+          "name": "TOTALAUMPRIMARYOWNER",
+          "type": "Numeric",
+          "label": "TOTALAUMPRIMARYOWNER",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": ".",
+          "currencySymbol": "$"
+        },
+        {
+          "fullyQualifiedName": "TOTALFINACCTSJOINTOWNER",
+          "name": "TOTALFINACCTSJOINTOWNER",
+          "type": "Numeric",
+          "label": "TOTALFINACCTSJOINTOWNER",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 1,
+          "format": "0.0",
+          "decimalSeparator": ".",
+          "currencySymbol": "$"
+        },
+        {
+          "fullyQualifiedName": "TOTALFINACCTSPRIMARYOWNER",
+          "name": "TOTALFINACCTSPRIMARYOWNER",
+          "type": "Numeric",
+          "label": "TOTALFINACCTSPRIMARYOWNER",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": ".",
+          "currencySymbol": "$"
+        },
+        {
+          "fullyQualifiedName": "TOTALFINANCIALACCOUNTS",
+          "name": "TOTALFINANCIALACCOUNTS",
+          "type": "Numeric",
+          "label": "TOTALFINANCIALACCOUNTS",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": ".",
+          "currencySymbol": "$"
+        },
+        {
+          "fullyQualifiedName": "TOTALHELDFINACCTSJOINTOWNER",
+          "name": "TOTALHELDFINACCTSJOINTOWNER",
+          "type": "Numeric",
+          "label": "TOTALHELDFINACCTSJOINTOWNER",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 1,
+          "format": "0.0",
+          "decimalSeparator": ".",
+          "currencySymbol": "$"
+        },
+        {
+          "fullyQualifiedName": "TOTALHELDFINACCTSPRIMARYOWNER",
+          "name": "TOTALHELDFINACCTSPRIMARYOWNER",
+          "type": "Numeric",
+          "label": "TOTALHELDFINACCTSPRIMARYOWNER",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 1,
+          "format": "0.#",
+          "decimalSeparator": ".",
+          "currencySymbol": "$"
+        },
+        {
+          "fullyQualifiedName": "TOTALNUMBEROFFINACCOUNTSPRIMARYOWNER",
+          "name": "TOTALNUMBEROFFINACCOUNTSPRIMARYOWNER",
+          "type": "Numeric",
+          "label": "TOTALNUMBEROFFINACCOUNTSPRIMARYOWNER",
+          "precision": 18,
+          "defaultValue": "null",
+          "scale": 0,
+          "format": "0.0",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "WALLETSHARE",
+          "name": "WALLETSHARE",
+          "type": "Numeric",
+          "label": "WALLETSHARE",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 6,
+          "format": "0.##################",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "YEARSSINCECLIENT",
+          "name": "YEARSSINCECLIENT",
+          "type": "Numeric",
+          "label": "YEARSSINCECLIENT",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "YEARSSINCECLIENTBUCKET",
+          "name": "YEARSSINCECLIENTBUCKET",
+          "type": "Text",
+          "label": "YEARSSINCECLIENTBUCKET"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "edgAccount.csv"
+    },
+    {
+      "fileName": "edgCase.csv",
+      "dateFields": [
+        "ClosedDate",
+        "CreatedDate",
+        "LastModifiedDate"
+
+      ]
+    },
+    {
+      "fileName": "edgContact.csv"
+    },
+    {
+      "fileName": "edgRecordType.csv"
+    },
+    {
+      "fileName": "edgSocialPersona.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastModifiedDate",
+        "LastReferencedDate",
+        "LastViewedDate"
+      ]
+    },
+    {
+      "fileName": "edgSocialPost.csv",
+      "dateFields": [
+        "CreatedDate",
+        "HarvestDate",
+        "LastModifiedDate",
+        "LastReferencedDate",
+        "LastViewedDate",
+        "Posted"
+      ]
+    },
+    {
+      "fileName": "edgUser.csv"
+    },
+    {
+      "fileName": "edgUserRole.csv",
+      "dateFields": [
+        "LastModifiedDate"
+      ]
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgSocialPost.csv",
+    "fieldName": "Posted"
+  }
+}

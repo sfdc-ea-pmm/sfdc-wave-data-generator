@@ -1,0 +1,103 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "Account.csv",
+      "dateFields": [
+        "CreatedDate__c",
+        "LastModifiedDate__c"
+      ]
+    },
+    {
+      "fileName": "Contact.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgAccount.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastModifiedDate"
+      ]
+    },
+    {
+      "fileName": "edgContact.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgGroup.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgLead.csv",
+      "dateFields": [
+        "CreatedDate"
+      ]
+    },
+    {
+      "fileName": "edgLeadHistory.csv",
+      "dateFields": [
+        "CreatedDate"
+      ]
+    },
+    {
+      "fileName": "edgLeadStatus.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgOpportunity.csv",
+      "dateFields": [
+        "CloseDate",
+        "CreatedDate"
+      ]
+    },
+    {
+      "fileName": "edgQueueSobject.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgUser.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgUserRole.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "Group.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "Lead.csv",
+      "dateFields": [
+        "CreatedDate__c",
+        "ConvertedDate__c",
+        "LastModifiedDate__c"
+      ]
+    },
+    {
+      "fileName": "LeadHistory.csv",
+      "dateFields": [
+        "CreatedDate__c"
+      ]
+    },
+    {
+      "fileName": "LeadStatus.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "Opportunity.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "QueueSobject.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "User.csv",
+      "dateFields": []
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgLeadHistory.csv",
+    "fieldName": "CreatedDate"
+  }
+}

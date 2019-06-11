@@ -1,0 +1,68 @@
+{
+    "appName": "Financial Services Analytics",
+    "appType": "FSC",
+    "appDescription": "This package includes demo data for Financial Services Analytics",
+    "userProfilePicturesUrl": "",
+    "timeShift": {
+        "usage": "This attribute is used to configure timeshifting",
+        "tObject": "Opportunity",
+        "dateField": "CloseDate",
+        "filter": "External_Id__c LIKE 'W_APPROVAL_Opportunity%' AND StageName = 'Closed Won'",
+        "compareDate": "2017-09-20",
+        "displayText": "Date of latest closed opportunity"
+    },
+    "objects": [
+    ],
+    "edgemarts": [
+        {
+            "edgemartDeveloperName": "edgProcessInstanceStep",
+            "edgemartLabel": "edgProcessInstanceStep",
+            "objectName": "ProcessInstanceStep",
+            "edgemartCsvDataUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgProcessInstanceStep.csv",
+            "edgemartJsonSchemaUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgProcessInstanceStep.schema.json",
+            "edgemartNodeNameInDataflow": "edgProcessInstanceStep",
+            "edgemartNodeNameToReplaceInDataflow": "Extract_ProcessInstanceStep",
+            "replaceData": true
+        },
+        {
+            "edgemartDeveloperName": "edgProcessInstance",
+            "edgemartLabel": "edgProcessInstance",
+            "objectName": "ProcessInstance",
+            "edgemartCsvDataUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgProcessInstance.csv",
+            "edgemartJsonSchemaUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgProcessInstance.schema.json",
+            "edgemartNodeNameInDataflow": "edgProcessInstance",
+            "edgemartNodeNameToReplaceInDataflow": "Extract_ProcessInstance",
+            "replaceData": true
+        },
+        {
+            "edgemartDeveloperName": "edgUser",
+            "edgemartLabel": "edgUser",
+            "objectName": "User",
+            "edgemartCsvDataUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgUser.csv",
+            "edgemartJsonSchemaUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgUser.schema.json",
+            "edgemartNodeNameInDataflow": "edgUser",
+            "edgemartNodeNameToReplaceInDataflow": "Extract_User",
+            "replaceData": true
+        },
+        {
+            "edgemartDeveloperName": "edgProcessDefinition",
+            "edgemartLabel": "edgProcessDefinition",
+            "objectName": "ProcessDefinition",
+            "edgemartCsvDataUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgProcessDefinition.csv",
+            "edgemartJsonSchemaUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgProcessDefinition.schema.json",
+            "edgemartNodeNameInDataflow": "edgProcessDefinition",
+            "edgemartNodeNameToReplaceInDataflow": "Extract_ProcessDefinition",
+            "replaceData": true
+        },
+        {
+            "edgemartDeveloperName": "edgUserRole",
+            "edgemartLabel": "edgUserRole",
+            "objectName": "UserRole",
+            "edgemartCsvDataUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgUserRole.csv",
+            "edgemartJsonSchemaUrl": "https://s3-us-west-2.amazonaws.com/ac-sdo-repo-dev/approval/data/output/latest/edgUserRole.schema.json",
+            "edgemartNodeNameInDataflow": "edgUserRole",
+            "edgemartNodeNameToReplaceInDataflow": "Extract_UserRole",
+            "replaceData": true
+        }
+    ]
+}

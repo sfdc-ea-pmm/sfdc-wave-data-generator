@@ -1,0 +1,37 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FSCDemoDataGen",
+            "request": "launch",
+            "mainClass": "pmmtech.FSCDemoDataGen",
+            "projectName": "fsc-data-gen"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FSCDemoDataGen",
+            "request": "launch",
+            "mainClass": "src.main.java.pmmtech.FSCDemoDataGen",
+            "projectName": "FSC-Demo-Data-Generator_358cd6f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "src.main.java.pmmtech.App",
+            "projectName": "FSC-Demo-Data-Generator_358cd6f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "pmmtech.App"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FSCDemoDataGen",
+            "request": "launch",
+            "mainClass": "FSCDemoDataGen"
+        }
+    ]
+}

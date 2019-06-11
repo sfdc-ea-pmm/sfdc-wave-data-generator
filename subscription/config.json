@@ -1,0 +1,48 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "edgAccount.csv"
+    },
+    {
+      "fileName": "edgContract.csv",
+      "dateFields": [
+        "ActivatedDate",
+        "SBQQ__AmendmentStartDate__c",
+        "CompanySignedDate",
+        "EndDate",
+        "StartDate",
+        "CreatedDate",
+        "CustomerSignedDate"
+      ]
+    },
+    {
+      "fileName": "edgOpportunity.csv",
+      "dateFields": [
+        "CloseDate",
+        "CreatedDate",
+        "LastModifiedDate"
+      ]
+    },
+    {
+      "fileName": "edgQuoteLine.csv"
+    },
+    {
+      "fileName": "edgSBQQSubscription.csv",
+      "dateFields": [
+        "CreatedDate",
+        "SBQQ__EndDate__c",
+        "SBQQ__RenewedDate__c",
+        "SBQQ__SegmentEndDate__c",
+        "SBQQ__SegmentStartDate__c",
+        "SBQQ__StartDate__c",
+        "SBQQ__SubscriptionEndDate__c",
+        "SBQQ__SubscriptionStartDate__c",
+        "SBQQ__TerminatedDate__c"
+      ]
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgContract.csv",
+    "fieldName": "StartDate"
+  }
+}

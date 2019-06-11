@@ -1,0 +1,83 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "edgAccount.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastModifiedDate"
+      ]
+    },
+    {
+      "fileName": "edgCase.csv",
+      "dateFields": [
+        "LastModifiedDate",
+        "CreatedDate",
+        "ClosedDate"
+      ]
+    },
+    {
+      "fileName": "edgEvent.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastModifiedDate",
+        "ActivityDate"
+      ]
+    },
+    {
+      "fileName": "edgGroup.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgOpportunity.csv",
+      "dateFields": [
+        "CreatedDate",
+        "CloseDate",
+        "LastModifiedDate",
+        "LastActivityDate"
+      ]
+    },
+    {
+      "fileName": "edgOpportunityAmount.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgOpportunityHistory.csv",
+      "dateFields": [
+        "CloseDate",
+        "CreatedDate"
+      ]
+    },
+    {
+      "fileName": "edgOpportunityStage.csv",
+      "dateFields": [
+        "CreatedDate",
+        "LastModifiedDate",
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgRecordType.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgTask.csv",
+      "dateFields": [
+        "CreatedDate",
+        "ActivityDate",
+        "LastModifiedDate"
+      ]
+    },
+    {
+      "fileName": "edgUser.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "edgUserRole.csv",
+      "dateFields": ["SystemModstamp"]
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgOpportunity.csv",
+    "fieldName": "CloseDate"
+  }
+}

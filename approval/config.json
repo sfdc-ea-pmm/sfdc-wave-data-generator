@@ -1,0 +1,69 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "edgProcessDefinition.csv",
+      "dateFields": [
+        "SystemModstamp"
+      ]
+    },
+    {
+      "fileName": "edgProcessInstance.csv",
+      "dateFields": [
+        "CompletedDate",
+        "CreatedDate"
+
+      ]
+    },
+    {
+      "fileName": "edgProcessInstanceStep.csv",
+      "dateFields": [
+        "CreatedDate"
+      ]
+    },
+    {
+      "fileName": "edgUser.csv"
+    },
+    {
+      "fileName": "edgUserRole.csv",
+      "dateFields": [
+        "LastModifiedDate"
+      ]
+    },
+    {
+      "fileName": "Knowledge_kav.csv"
+    },
+    {
+      "fileName": "Manager.csv"
+    },
+    {
+      "fileName": "ProcessDefinition.csv"
+    },
+    {
+      "fileName": "ProcessInstance.csv",
+      "dateFields": [
+        "CompletedDate__c",
+        "CreatedDate__c",
+        "LastModifiedDate__c"
+      ]
+    },
+    {
+      "fileName": "ProcessInstanceStep.csv",
+      "dateFields": [
+        "CreatedDate__c"
+      ]
+    },
+    {
+      "fileName": "User.csv"
+    },
+    {
+      "fileName": "UserRole.csv",
+      "dateFields": [
+        "LastModifiedDate__c"
+      ]
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "edgProcessInstance.csv",
+    "fieldName": "CreatedDate"
+  }
+}
