@@ -95,6 +95,10 @@ def ssn():
     """Fake ssn formula. Example: '078-08-6469'"""
     return fake.ssn()
 
+_gender = ['Male', 'Female']
+def gender():
+    return choice(_gender)
+
 
 ###########################################
 # Address formulas
