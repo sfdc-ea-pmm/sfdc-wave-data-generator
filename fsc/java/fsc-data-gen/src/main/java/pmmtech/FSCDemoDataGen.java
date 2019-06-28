@@ -172,7 +172,6 @@ public class FSCDemoDataGen {
                 .withIgnoreLeadingWhiteSpace(true)
                 .build();
 
-            //oz.
             CsvToBean<CampaignCsv> campCsvToBean = new CsvToBeanBuilder<CampaignCsv>(srcCampaignReader)
                 .withType(CampaignCsv.class)
                 .withIgnoreLeadingWhiteSpace(true)
@@ -588,11 +587,9 @@ public class FSCDemoDataGen {
                 lstDatesToProcess.add((Calendar)todayDate.clone());
             }
 
-            // oz.
             Iterator<CampaignCsv> csvCampaignIterator = campCsvToBean.iterator();
             Iterator<CampaignMemberCsv> csvCampMembeIterator = campMemberCsvToBean.iterator();
             
-
             for (int cantIterations = 0; cantIterations < lstDatesToProcess.size(); cantIterations++) {
                 
                 currentSnapshotDate = lstDatesToProcess.get(cantIterations);
@@ -1873,7 +1870,7 @@ public class FSCDemoDataGen {
             
             System.out.println("Date of the latests converted Lead: " + dateFormat.format(dateOfLatestCreatedLead.getTime()));
             long lLeadDaysToShift = Helper.getDaysBetween(dateOfLatestCreatedLead.getTime(), Calendar.getInstance().getTime());
-            Long lObjLeadDts = new Long(lLeadDaysToShift);
+            Long lObjLeadDts = Long.valueOf(lLeadDaysToShift);
             int daysToShiftLeads = lObjLeadDts.intValue();
             System.out.println("Days to shift Lead dates: " + daysToShiftLeads);
 
@@ -1888,7 +1885,7 @@ public class FSCDemoDataGen {
                 Calendar calHistoryEnd = null;
 
                 long lDaysSinceCreation = Helper.getDaysBetween(leadCreatedDate, nowDate);
-                Long lObjDaysSinceCreation = new Long(lDaysSinceCreation);
+                Long lObjDaysSinceCreation = Long.valueOf(lDaysSinceCreation);
                 int daysSinceCreation = lObjDaysSinceCreation.intValue();
                 
                 leadToShift.setCreatedDate(dateFormat.format(calLeadCreatedDate.getTime()));
@@ -2108,7 +2105,7 @@ public class FSCDemoDataGen {
 
             System.out.println("Date of the latests closed oppty: " + dateFormat.format(dateOfLatestClosedOppty.getTime()));
             long lDaysToShift = Helper.getDaysBetween(dateOfLatestClosedOppty.getTime(), Calendar.getInstance().getTime());
-            Long lObjDts = new Long(lDaysToShift);
+            Long lObjDts = Long.valueOf(lDaysToShift);
             int daysToShift = lObjDts.intValue();
             System.out.println("Days to shift dates: " + lDaysToShift);
 
