@@ -13,6 +13,12 @@ public class UserOwnerCsv {
     @CsvBindByName(column = "Name")
     private String name;
 
+    @CsvBindByName(column = "RoleName")
+    private String roleName;
+
+    @CsvBindByName(column = "Email")
+    private String email;
+
     @CsvBindByName(column = "State")
     private String state;
 
@@ -60,6 +66,22 @@ public class UserOwnerCsv {
 
     public void setSmallPhotoUrl(String smallPhotoUrl) {
         this.smallPhotoUrl = smallPhotoUrl;
+    }
+
+    public String getRoleName() {
+        return this.roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

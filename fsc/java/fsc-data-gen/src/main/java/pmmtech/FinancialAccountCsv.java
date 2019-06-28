@@ -27,8 +27,35 @@ public class FinancialAccountCsv {
     @CsvBindByName(column = "AccountServiceModel")
     private String accountServiceModel;
 
+    @CsvBindByName(column = "AccountTotalAUMPrimaryOwner", required = false)
+    private double accountTotalAUMPrimaryOwner;
+
+    @CsvBindByName(column = "AccountTotalFinAcctsPrimaryOwner", required = false)
+    private double accountTotalFinAcctsPrimaryOwner;
+
+    @CsvBindByName(column = "AccountTotalHeldFinAcctsPrimaryOwner", required = false)
+    private double accountTotalHeldFinAcctsPrimaryOwner;
+
+    @CsvBindByName(column = "OwnerId")
+    private String ownerId;
+
     @CsvBindByName(column = "OwnerName")
     private String ownerName;
+
+    @CsvBindByName(column = "OwnerState", required = false)
+    private String ownerState;
+
+    @CsvBindByName(column = "OwnerCity", required = false)
+    private String ownerCity;
+
+    @CsvBindByName(column = "OwnerRoleName", required = false)
+    private String ownerRoleName;
+
+    @CsvBindByName(column = "OwnerEmail", required = false)
+    private String ownerEmail;
+
+    @CsvBindByName(column = "OwnerSmallPhotoUrl", required = false)
+    private String ownerSmallPhotoUrl;
 
     @CsvBindByName(column = "FinancialAccountType")
     private String financialAccountType;
@@ -42,8 +69,17 @@ public class FinancialAccountCsv {
     @CsvBindByName(column = "HeldAway")
     private boolean heldAway;
 
+    @CsvBindByName(column = "Managed")
+    private boolean managed;
+
     @CsvBindByName(column = "RecordTypeName")
     private String recordTypeName;
+
+    @CsvBindByName(column = "Ownership")
+    private String ownership;
+
+    @CsvBindByName(column = "CreatedDate")
+    private String createdDate;
 
     private ArrayList<FinancialAccountTransactionCsv> transactions = new ArrayList<FinancialAccountTransactionCsv>();
 
@@ -52,7 +88,10 @@ public class FinancialAccountCsv {
         this.setAccountInvestmentObjectives(accountData.getInvestmentObjectives());
         this.setAccountMarketingSegment(accountData.getMarketingSegment());
         this.setAccountName(accountData.getName());
-        this.setAccountServiceModel(accountData.getServiceModel());        
+        this.setAccountServiceModel(accountData.getServiceModel());
+        this.setAccountTotalAUMPrimaryOwner(accountData.getTotalAUMPrimaryOwner());
+        this.setAccountTotalFinAcctsPrimaryOwner(accountData.getTotalFinAcctsPrimaryOwner());
+        this.setAccountTotalHeldFinAcctsPrimaryOwner(accountData.getTotalHeldFinAcctsPrimaryOwner());
     }
 
     public String getId() {
@@ -158,12 +197,21 @@ public class FinancialAccountCsv {
             "AccountMarketingSegment",
             "AccountInvestmentObjectives",
             "AccountServiceModel",
+            "OwnerId",
             "OwnerName",
+            "OwnerState",
+            "OwnerCity",
+            "OwnerSmallPhotoUrl",
             "FinancialAccountType",
             "JointOwnerId",
             "Balance",
             "HeldAway",
-            "RecordTypeName"
+            "RecordTypeName",
+            "AccountTotalAUMPrimaryOwner",
+            "AccountTotalFinAcctsPrimaryOwner",
+            "AccountTotalHeldFinAcctsPrimaryOwner",
+            "Managed",
+            "Ownership"
         };
         
         return headerRecord;
@@ -177,12 +225,21 @@ public class FinancialAccountCsv {
             this.getAccountMarketingSegment(),
             this.getAccountInvestmentObjectives(),
             this.getAccountServiceModel(),
+            this.getOwnerId(),
             this.getOwnerName(),
+            this.getOwnerState(),
+            this.getOwnerCity(),
+            this.getOwnerSmallPhotoUrl(),
             this.getFinancialAccountType(),
             this.getJointOwnerId(),
             Double.valueOf(this.getBalance()).toString(),
             Boolean.valueOf(this.getHeldAway()).toString(),
-            this.getRecordTypeName()
+            this.getRecordTypeName(),
+            Double.valueOf(this.getAccountTotalAUMPrimaryOwner()).toString(),
+            Double.valueOf(this.getAccountTotalFinAcctsPrimaryOwner()).toString(),
+            Double.valueOf(this.getAccountTotalHeldFinAcctsPrimaryOwner()).toString(),
+            Boolean.valueOf(this.isManaged()).toString(),
+            this.getOwnership()
         };
         
         return dataRecord;
@@ -204,4 +261,113 @@ public class FinancialAccountCsv {
         this.recordTypeName = recordTypeName;
     }
 
+    public double getAccountTotalAUMPrimaryOwner() {
+        return this.accountTotalAUMPrimaryOwner;
+    }
+
+    public void setAccountTotalAUMPrimaryOwner(double accountTotalAUMPrimaryOwner) {
+        this.accountTotalAUMPrimaryOwner = accountTotalAUMPrimaryOwner;
+    }
+
+    public double getAccountTotalFinAcctsPrimaryOwner() {
+        return this.accountTotalFinAcctsPrimaryOwner;
+    }
+
+    public void setAccountTotalFinAcctsPrimaryOwner(double accountTotalFinAcctsPrimaryOwner) {
+        this.accountTotalFinAcctsPrimaryOwner = accountTotalFinAcctsPrimaryOwner;
+    }
+
+    public double getAccountTotalHeldFinAcctsPrimaryOwner() {
+        return this.accountTotalHeldFinAcctsPrimaryOwner;
+    }
+
+    public void setAccountTotalHeldFinAcctsPrimaryOwner(double accountTotalHeldFinAcctsPrimaryOwner) {
+        this.accountTotalHeldFinAcctsPrimaryOwner = accountTotalHeldFinAcctsPrimaryOwner;
+    }
+
+    public boolean isManaged() {
+        return this.managed;
+    }
+
+    public boolean getManaged() {
+        return this.managed;
+    }
+
+    public void setManaged(boolean managed) {
+        this.managed = managed;
+    }
+
+    public String getOwnership() {
+        return this.ownership;
+    }
+
+    public void setOwnership(String ownership) {
+        this.ownership = ownership;
+    }
+
+    public String getOwnerId() {
+        return this.ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getOwnerState() {
+        return this.ownerState;
+    }
+
+    public void setOwnerState(String ownerState) {
+        this.ownerState = ownerState;
+    }
+
+    public String getOwnerCity() {
+        return this.ownerCity;
+    }
+
+    public void setOwnerCity(String ownerCity) {
+        this.ownerCity = ownerCity;
+    }
+
+    public String getOwnerRoleName() {
+        return this.ownerRoleName;
+    }
+
+    public void setOwnerRoleName(String ownerRoleName) {
+        this.ownerRoleName = ownerRoleName;
+    }
+
+    public String getOwnerEmail() {
+        return this.ownerEmail;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
+    }
+
+    public String getOwnerSmallPhotoUrl() {
+        return this.ownerSmallPhotoUrl;
+    }
+
+    public void setOwnerSmallPhotoUrl(String ownerSmallPhotoUrl) {
+        this.ownerSmallPhotoUrl = ownerSmallPhotoUrl;
+    }
+
+    public String getCreatedDate() {
+        return this.createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setOwnerData(UserOwnerCsv ownerData){
+        this.setOwnerCity(ownerData.getCity());
+        this.setOwnerEmail(ownerData.getEmail());
+        this.setOwnerId(ownerData.getId());
+        this.setOwnerName(ownerData.getName());
+        this.setOwnerRoleName(ownerData.getRoleName());
+        this.setOwnerSmallPhotoUrl(ownerData.getSmallPhotoUrl());
+        this.setOwnerState(ownerData.getState());
+    }
 }

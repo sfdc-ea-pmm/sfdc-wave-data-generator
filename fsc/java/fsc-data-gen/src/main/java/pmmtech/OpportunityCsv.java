@@ -29,13 +29,16 @@ public class OpportunityCsv {
     private String accountMarketingSegment;
 
     @CsvBindByName(column = "Amount")
-    private int amount;
+    private double amount;
 
     @CsvBindByName(column = "ExpectedRevenue", required = false)
-    private int expectedRevenue;
+    private double expectedRevenue;
 
     @CsvBindByName(column = "CloseDate")
     private String closeDate;
+
+    @CsvBindByName(column = "CreatedDate")
+    private String createdDate;
 
     @CsvBindByName(column = "DaysSinceLastActivity")
     private int daysSinceLastActivity;
@@ -147,11 +150,11 @@ public class OpportunityCsv {
         this.accountId = accountId;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return this.amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -299,11 +302,11 @@ public class OpportunityCsv {
         this.activityId = activityId;
     }
 
-    public int getExpectedRevenue() {
+    public double getExpectedRevenue() {
         return this.expectedRevenue <= 0 ? this.amount : this.expectedRevenue;
     }
 
-    public void setExpectedRevenue(int expectedRevenue) {
+    public void setExpectedRevenue(double expectedRevenue) {
         this.expectedRevenue = expectedRevenue;
     }
 
@@ -337,6 +340,14 @@ public class OpportunityCsv {
 
     public void setRecordTypeName(String recordTypeName) {
         this.recordTypeName = recordTypeName;
+    }
+
+    public String getCreatedDate() {
+        return this.createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
 }

@@ -7,6 +7,9 @@ import com.opencsv.bean.CsvBindByName;
  */
 public class PipelineTrendingCsv {
 
+    @CsvBindByName(column = "Id")
+    private String id;
+
     // Opportunity fields
 
     @CsvBindByName(column = "OpportunityId")
@@ -28,7 +31,7 @@ public class PipelineTrendingCsv {
     private String opportunityOwnerCity;
 
     @CsvBindByName(column = "OpportunityAmount")
-    private int opportunityAmount;
+    private double opportunityAmount;
 
     @CsvBindByName(column = "OpportunityCloseDate")
     private String opportunityCloseDate;
@@ -56,6 +59,12 @@ public class PipelineTrendingCsv {
 
     @CsvBindByName(column = "OpportunityIsWon")
     private boolean opportunityIsWon;
+
+    @CsvBindByName(column = "OpportunityFinancialAccount", required = false)
+    private String opportunityFinancialAccount;
+
+    @CsvBindByName(column = "OpportunityHouseHold", required = false)
+    private String opportunityHouseHold;
 
     // Account fields
     @CsvBindByName(column = "AccountIndustry")
@@ -88,7 +97,7 @@ public class PipelineTrendingCsv {
     private int stageSortOrder;
 
     @CsvBindByName(column = "PipelineAmount")
-    private int pipelineAmount;
+    private double pipelineAmount;
 
     @CsvBindByName(column = "ValidFromDate")
     private String validFromDate;
@@ -183,11 +192,11 @@ public class PipelineTrendingCsv {
         this.opportunityOwnerCity = opportunityOwnerCity;
     }
 
-    public int getOpportunityAmount() {
+    public double getOpportunityAmount() {
         return this.opportunityAmount;
     }
 
-    public void setOpportunityAmount(int opportunityAmount) {
+    public void setOpportunityAmount(double opportunityAmount) {
         this.opportunityAmount = opportunityAmount;
     }
 
@@ -335,11 +344,11 @@ public class PipelineTrendingCsv {
         this.stageSortOrder = stageSortOrder;
     }
 
-    public int getPipelineAmount() {
+    public double getPipelineAmount() {
         return this.pipelineAmount;
     }
 
-    public void setPipelineAmount(int pipelineAmount) {
+    public void setPipelineAmount(double pipelineAmount) {
         this.pipelineAmount = pipelineAmount;
     }
 
@@ -413,6 +422,30 @@ public class PipelineTrendingCsv {
 
     public void setAccountBillingCountry(String accountBillingCountry) {
         this.accountBillingCountry = accountBillingCountry;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOpportunityFinancialAccount() {
+        return this.opportunityFinancialAccount;
+    }
+
+    public void setOpportunityFinancialAccount(String opportunityFinancialAccount) {
+        this.opportunityFinancialAccount = opportunityFinancialAccount;
+    }
+
+    public String getOpportunityHouseHold() {
+        return this.opportunityHouseHold;
+    }
+
+    public void setOpportunityHouseHold(String opportunityHouseHold) {
+        this.opportunityHouseHold = opportunityHouseHold;
     }
 
 }

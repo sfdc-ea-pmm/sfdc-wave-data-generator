@@ -1,6 +1,10 @@
 package pmmtech;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -30,11 +34,50 @@ public class AccountCsv {
     @CsvBindByName(column = "RecordTypeName", required = false)
     private String recordTypeName;
 
+    @CsvBindByName(column = "OwnerId", required = false)
+    private String ownerId;
+
+    @CsvBindByName(column = "LeadOrContactId", required = false)
+    private String leadOrContactId;
+
     @CsvBindByName(column = "OwnerName", required = false)
     private String ownerName;
 
+    @CsvBindByName(column = "OwnerState", required = false)
+    private String ownerState;
+
+    @CsvBindByName(column = "OwnerCity", required = false)
+    private String ownerCity;
+
+    @CsvBindByName(column = "OwnerRoleName", required = false)
+    private String ownerRoleName;
+
+    @CsvBindByName(column = "OwnerEmail", required = false)
+    private String ownerEmail;
+
+    @CsvBindByName(column = "OwnerSmallPhotoUrl", required = false)
+    private String ownerSmallPhotoUrl;
+
+    @CsvBindByName(column = "ReviewFrequency", required = false)
+    private String reviewFrequency;
+
+    @CsvBindByName(column = "HouseholdSize", required = false)
+    private int householdSize;
+
+    @CsvBindByName(column = "HouseholdSizeText", required = false)
+    private String householdSizeText;
+
+    @CsvBindByName(column = "HouseholdComputed", required = false)
+    private String householdComputed;
+
+    @CsvBindByName(column = "RollupHouseHoldName", required = false)
+    private String rollupHouseHoldName;
+
     @CsvBindByName(column = "MarketingSegment", required = false)
     private String marketingSegment;
+
+    @CsvBindByName(column = "CustomerSegment", required = false)
+    private String customerSegment;
 
     @CsvBindByName(column = "ServiceModel", required = false)
     private String serviceModel;
@@ -105,6 +148,9 @@ public class AccountCsv {
     @CsvBindByName(column = "AgeBucket", required = false)
     private String ageBucket;
 
+    @CsvBindByName(column = "AUMBucket", required = false)
+    private String aumBucket;
+
     @CsvBindByName(column = "YearsSinceClientBucket", required = false)
     private String yearsSinceClientBucket;
 
@@ -126,8 +172,27 @@ public class AccountCsv {
     @CsvBindByName(column = "WalletShare", required = false)
     private double walletShare;
 
+    @CsvBindByName(column = "FinancialInterests", required = false)
+    private String financialInterests;
+
+    @CsvBindByName(column = "BillingCountry", required = false)
+    private String billingCountry;
+
+    @CsvBindByName(column = "DaysSinceLastInteraction", required = false)
+    private long daysSinceLastInteraction;
+
+    @CsvBindByName(column = "CreatedDate", required = false)
+    private String createdDate;
+
+    @CsvBindByName(column = "RiskTolerance", required = false)
+    private String riskTolerance;
+
+    @CsvBindByName(column = "SampleAccount", required = false)
+    private boolean sampleAccount;
+
     private boolean heldAwayWillIncrease;
     private String industry;
+    private boolean willHaveReview;
 
     private ArrayList<FinancialAccountCsv> financialAccounts = new ArrayList<FinancialAccountCsv>();
     private ArrayList<ActivityCsv> activities = new ArrayList<ActivityCsv>();
@@ -142,6 +207,15 @@ public class AccountCsv {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getLeadOrContactId() {
+        return this.leadOrContactId;
+    }
+
+    public void setLeadOrContactId(String leadOrContactId) {
+        this.leadOrContactId = leadOrContactId;
+    }
+
 
     public String getInvestmentExperience() {
         return this.investmentExperience;
@@ -205,6 +279,14 @@ public class AccountCsv {
 
     public void setMarketingSegment(String marketingSegment) {
         this.marketingSegment = marketingSegment;
+    }
+
+    public String getCustomerSegment() {
+        return this.customerSegment;
+    }
+
+    public void setCustomerSegment(String customerSegment) {
+        this.customerSegment = customerSegment;
     }
 
     public String getServiceModel() {
@@ -553,10 +635,18 @@ public class AccountCsv {
             "InvestmentObjectives",
             "AccountNumber",
             "Id",
+            "LeadOrContactId",
             "RelationshipStartDate",
             "RecordTypeName",
+            "OwnerId",
             "OwnerName",
+            "OwnerState",
+            "OwnerCity",
+            "OwnerRoleName",
+            "OwnerEmail",
+            "OwnerSmallPhotoUrl",
             "MarketingSegment",
+            "CustomerSegment",
             "ServiceModel",
             "LastReview",
             "LastInteraction",
@@ -586,7 +676,8 @@ public class AccountCsv {
             "HeldAway",
             "AUM",
             "AUA",
-            "WalletShare"
+            "WalletShare",
+            "SampleAccount"
         };
         
         return headerRecord;
@@ -599,10 +690,18 @@ public class AccountCsv {
             this.getInvestmentObjectives(),
             this.getAccountNumber(),
             this.getId(),
+            this.getLeadOrContactId(),
             this.getRelationshipStartDate(),
             this.getRecordTypeName(),
+            this.getOwnerId(),
             this.getOwnerName(),
+            this.getOwnerState(),
+            this.getOwnerCity(),
+            this.getOwnerRoleName(),
+            this.getOwnerEmail(),
+            this.getOwnerSmallPhotoUrl(),
             this.getMarketingSegment(),
+            this.getCustomerSegment(),
             this.getServiceModel(),
             this.getLastReview(),
             this.getLastInteraction(),
@@ -632,7 +731,8 @@ public class AccountCsv {
             Double.valueOf(this.getHeldAway()).toString(),
             Double.valueOf(this.getAum()).toString(),
             Double.valueOf(this.getAua()).toString(),
-            Double.valueOf(this.getWalletShare()).toString()            
+            Double.valueOf(this.getWalletShare()).toString(),
+            Boolean.valueOf(this.isSampleAccount()).toString()
         };
         
         return dataRecord;
@@ -688,4 +788,238 @@ public class AccountCsv {
         this.industry = industry;
     }
 
+    public boolean isSampleAccount() {
+        return this.sampleAccount;
+    }
+
+    public boolean getSampleAccount() {
+        return this.sampleAccount;
+    }
+
+    public void setSampleAccount(boolean sampleAccount) {
+        this.sampleAccount = sampleAccount;
+    }
+
+    public String getOwnerId() {
+        return this.ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getFinancialInterests() {
+        return this.financialInterests;
+    }
+
+    public void setFinancialInterests(String financialInterests) {
+        this.financialInterests = financialInterests;
+    }
+
+    public String getBillingCountry() {
+        return this.billingCountry;
+    }
+
+    public void setBillingCountry(String billingCountry) {
+        this.billingCountry = billingCountry;
+    }
+
+    public long getDaysSinceLastInteraction() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date lastIntDate = sdf.parse(this.lastInteraction);
+            Calendar calNow = Calendar.getInstance();
+            Date actDate = calNow.getTime();
+            this.daysSinceLastInteraction = Helper.getDaysBetween(lastIntDate, actDate);
+        }
+        catch (ParseException e) {
+            this.daysSinceLastInteraction = 0;
+        }
+
+        if(this.daysSinceLastInteraction < 0){
+            this.daysSinceLastInteraction = 0;
+        }
+
+        return this.daysSinceLastInteraction;
+    }
+
+    public void setDaysSinceLastInteraction(long daysSinceLastInteraction) {
+        this.daysSinceLastInteraction = daysSinceLastInteraction;
+    }
+
+    public String getCreatedDate() {
+        return this.createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getOwnerState() {
+        return this.ownerState;
+    }
+
+    public void setOwnerState(String ownerState) {
+        this.ownerState = ownerState;
+    }
+
+    public String getOwnerCity() {
+        return this.ownerCity;
+    }
+
+    public void setOwnerCity(String ownerCity) {
+        this.ownerCity = ownerCity;
+    }
+
+    public String getOwnerRoleName() {
+        return this.ownerRoleName;
+    }
+
+    public void setOwnerRoleName(String ownerRoleName) {
+        this.ownerRoleName = ownerRoleName;
+    }
+
+    public String getOwnerEmail() {
+        return this.ownerEmail;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
+    }
+
+    public String getOwnerSmallPhotoUrl() {
+        return this.ownerSmallPhotoUrl;
+    }
+
+    public void setOwnerSmallPhotoUrl(String ownerSmallPhotoUrl) {
+        this.ownerSmallPhotoUrl = ownerSmallPhotoUrl;
+    }
+
+    public String getReviewFrequency() {
+        return this.reviewFrequency;
+    }
+
+    public void setReviewFrequency(String reviewFrequency) {
+        this.reviewFrequency = reviewFrequency;
+    }
+
+    public int getHouseholdSize() {
+        return this.householdSize;
+    }
+
+    public void setHouseholdSize(int householdSize) {
+        this.householdSize = householdSize;
+    }
+
+    public String getHouseholdSizeText() {
+        return this.householdSizeText;
+    }
+
+    public void setHouseholdSizeText(String householdSizeText) {
+        this.householdSizeText = householdSizeText;
+    }
+
+    public String getHouseholdComputed() {
+        return this.householdComputed;
+    }
+
+    public void setHouseholdComputed(String householdComputed) {
+        this.householdComputed = householdComputed;
+    }
+
+    public String getRollupHouseHoldName() {
+        return this.rollupHouseHoldName;
+    }
+
+    public void setRollupHouseHoldName(String rollupHouseHoldName) {
+        this.rollupHouseHoldName = rollupHouseHoldName;
+    }
+
+    public String getAumBucket() {
+        /* 
+        case when 'FinServ__AUM__c' > 0 && 'FinServ__AUM__c' < 500000 then \"1. Less than 500K\" 
+        when 'FinServ__AUM__c' >= 500000 && 'FinServ__AUM__c' < 2000000 then \"2. Between 500K and 2M\" 
+        when 'FinServ__AUM__c' >= 2000000 && 'FinServ__AUM__c' < 5000000 then \"3. Between 2M and 5M\" 
+        when 'FinServ__AUM__c' >= 5000000 && 'FinServ__AUM__c' < 10000000 then \"4. Between 5M and 10M\" 
+        when 'FinServ__AUM__c' >= 10000000 then \"5. More than 10M\" 
+        else \"6. NA\" end
+        */
+
+        double aumVal = this.getAum();
+
+        if (aumVal > 0 && aumVal < 500000) {
+            this.aumBucket = "1. Less than 500K";
+        } 
+        else if(aumVal >= 500000 && aumVal < 2000000){
+            this.aumBucket = "2. Between 500K and 2M";
+        }
+        else if(aumVal >= 2000000 && aumVal < 5000000){
+            this.aumBucket = "3. Between 2M and 5M";
+        }
+        else if(aumVal >= 5000000 && aumVal < 10000000){
+            this.aumBucket = "4. Between 5M and 10M";
+        }
+        else if(aumVal >= 10000000 && aumVal < 10000000){
+            this.aumBucket = "5. More than 10M";
+        }
+        else {
+            this.aumBucket = "6. NA";
+        }
+
+        return this.aumBucket;
+    }
+
+    public void setAumBucket(String aumBucket) {
+        this.aumBucket = aumBucket;
+    }
+
+    public String getRiskTolerance() {
+        return this.riskTolerance;
+    }
+
+    public void setRiskTolerance(String riskTolerance) {
+        this.riskTolerance = riskTolerance;
+    }
+
+    public void setOwnerData(UserOwnerCsv ownerData){
+        this.setOwnerCity(ownerData.getCity());
+        this.setOwnerEmail(ownerData.getEmail());
+        this.setOwnerId(ownerData.getId());
+        this.setOwnerName(ownerData.getName());
+        this.setOwnerRoleName(ownerData.getRoleName());
+        this.setOwnerSmallPhotoUrl(ownerData.getSmallPhotoUrl());
+        this.setOwnerState(ownerData.getState());
+    }
+
+    public boolean getWillHaveReview() {
+        return this.willHaveReview;
+    }
+
+    public void setWillHaveReview(boolean willHaveReview) {
+        this.willHaveReview = willHaveReview;
+    }    
+
+    public void generateReviewAndInteractionDates(Calendar relativeDate){
+        // FinServ__LastReview__c (Random date between today and -1 month)
+        // FinServ__LastInteraction__c (Random date between today and FinServ__LastReview__c)
+        // FinServ__NextReview__c (Today() + Random days 1, 30)
+        
+        int daysSinceLastReview = Helper.getRandomNumberInRange(1, 30);
+        int daysSinceLastInteraction = Helper.getRandomNumberInRange(0, daysSinceLastReview);
+        int daysUntilNextReview = Helper.getRandomNumberInRange(15, 30);
+
+        Calendar calLastReviewDate = (Calendar)relativeDate.clone();
+        Calendar calLastInteractionDate = (Calendar)relativeDate.clone();
+        Calendar calNextReviewDate = (Calendar)relativeDate.clone();
+
+        calLastReviewDate.add(Calendar.DAY_OF_MONTH, -daysSinceLastReview);
+        calLastInteractionDate.add(Calendar.DAY_OF_MONTH, -daysSinceLastInteraction);
+        calNextReviewDate.add(Calendar.DAY_OF_MONTH, daysUntilNextReview);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        this.setLastReview(sdf.format(calLastReviewDate.getTime()));
+        this.setLastInteraction(sdf.format(calLastInteractionDate.getTime()));
+        this.setNextReview(sdf.format(calNextReviewDate.getTime()));
+    }
 }

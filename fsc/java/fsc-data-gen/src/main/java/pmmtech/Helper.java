@@ -3,6 +3,7 @@ package pmmtech;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import static java.util.Calendar.*;
 
@@ -15,6 +16,13 @@ import java.util.List;
  * Helper
  */
 public class Helper {
+
+    public static long getDaysBetween(Date first, Date last) {
+        long diffInMillies = Math.abs(last.getTime() - first.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        
+        return diff;
+    }
 
     public static int getDiffYears(Date first, Date last) {
         Calendar a = getCalendar(first);
