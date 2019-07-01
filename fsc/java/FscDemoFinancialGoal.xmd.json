@@ -1,0 +1,150 @@
+{
+  "dataset": {},
+  "dates": [],
+  "derivedDimensions": [],
+  "derivedMeasures": [
+    {
+      "conditionalFormatting": {},
+      "field": "% Complete",
+      "format": {
+        "customFormat": "[\"$#,###.#%\",1]"
+      },
+      "label": "% Complete",
+      "showInExplorer": false
+    },
+    {
+      "conditionalFormatting": {},
+      "field": "Time Elapsed",
+      "format": {
+        "customFormat": "[\"0.00%\",100]"
+      },
+      "showInExplorer": true
+    },
+    {
+      "conditionalFormatting": {},
+      "field": "Achieved Percentage",
+      "format": {
+        "customFormat": "[\"0.00%\",100]"
+      },
+      "showInExplorer": true
+    },
+    {
+      "conditionalFormatting": {},
+      "field": "B",
+      "format": {
+        "customFormat": "[\"$#,###\",1]"
+      },
+      "showInExplorer": true
+    },
+    {
+      "conditionalFormatting": {},
+      "field": "A",
+      "format": {
+        "customFormat": "[\"$#,###\",1]"
+      },
+      "showInExplorer": true
+    }
+  ],
+  "dimensions": [
+    {
+      "conditionalFormatting": {},
+      "customActions": [],
+      "field": "ACHIEVEDPERCENTAGERANGE",
+      "members": [
+        {
+          "label": "Not Started",
+          "member": "1. Not Started"
+        },
+        {
+          "label": "0-25%",
+          "member": "2. <=25%"
+        },
+        {
+          "label": "26-50%",
+          "member": "3. 26-50%"
+        },
+        {
+          "label": "51-75%",
+          "member": "4. 51-75%"
+        },
+        {
+          "label": "76-99%",
+          "member": "5. 76-99%"
+        },
+        {
+          "label": "Completed",
+          "member": "6. Completed"
+        }
+      ],
+      "recordDisplayFields": [],
+      "salesforceActions": []
+    },
+    {
+      "conditionalFormatting": {},
+      "customActions": [],
+      "field": "ACCOUNTNAME",
+      "label": "Account Name",
+      "linkTemplateEnabled": true,
+      "members": [],
+      "recordDisplayFields": [
+        "ACCOUNTNAME"
+      ],
+      "recordIdField": "ACCOUNTID",
+      "salesforceActions": [],
+      "salesforceActionsEnabled": false
+    },
+    {
+      "conditionalFormatting": {},
+      "customActions": [],
+      "field": "NAME",
+      "label": "Goal Name",
+      "linkTemplateEnabled": true,
+      "members": [],
+      "recordDisplayFields": [
+        "NAME"
+      ],
+      "recordIdField": "ID",
+      "salesforceActions": [],
+      "salesforceActionsEnabled": false
+    },
+    {
+      "conditionalFormatting": {},
+      "customActions": [],
+      "field": "TYPE",
+      "label": "Goal Type",
+      "linkTemplateEnabled": true,
+      "members": [],
+      "recordIdField": "ACCOUNTID",
+      "salesforceActions": [],
+      "salesforceActionsEnabled": false
+    }
+  ],
+  "measures": [
+    {
+      "conditionalFormatting": {},
+      "field": "ACHIEVEDPERCENTAGE",
+      "format": {
+        "customFormat": "[\"0.0%\",1]"
+      },
+      "label": "% Complete"
+    },
+    {
+      "conditionalFormatting": {},
+      "field": "ACTUALVALUE",
+      "label": "Actual Value",
+      "format": {
+        "customFormat": "[\"$#,###\",1]"
+      }
+    },
+    {
+      "conditionalFormatting": {},
+      "field": "TARGETVALUE",
+      "label": "Target Value",
+      "format": {
+        "customFormat": "[\"$#,###\",1]"
+      }
+    }
+  ],
+  "organizations": [],
+  "showDetailsDefaultFields": []
+}
