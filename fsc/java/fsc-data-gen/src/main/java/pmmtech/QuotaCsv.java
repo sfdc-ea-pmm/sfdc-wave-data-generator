@@ -19,13 +19,25 @@ public class QuotaCsv {
     @CsvBindByName(column = "StartDate")
     private String startDate;
 
+    @CsvBindByName(column = "SmallPhotoUrl")
+    private String smallPhotoUrl;
+
     @CsvBindByName(column = "QuotaAmount")
     private int quotaAmount;
+
+    public String getSmallPhotoUrl() {
+        return this.smallPhotoUrl;
+    }
+
+    public void setSmallPhotoUrl(String smallPhotoUrl) {
+        this.smallPhotoUrl = smallPhotoUrl;
+    }
 
     public void setUserOwnerData(UserOwnerCsv userOwner){
         this.setUser(userOwner.getName());
         this.setCity(userOwner.getCity());
         this.setState(userOwner.getState());
+        this.setSmallPhotoUrl(userOwner.getSmallPhotoUrl());
     }
 
     public String getUser() {

@@ -25,11 +25,17 @@ public class FinancialAccountTransactionCsv {
     @CsvBindByName(column = "AccountInvestmentObjectives")
     private String accountInvestmentObjectives;
 
+    @CsvBindByName(column = "AccountInvestmentExperience")
+    private String accountInvestmentExperience;
+
     @CsvBindByName(column = "AccountServiceModel")
     private String accountServiceModel;
 
     @CsvBindByName(column = "OwnerName")
     private String ownerName;
+
+    @CsvBindByName(column = "AccountLastInteraction")
+    private String accountLastInteraction;
 
     @CsvBindByName(column = "FinancialAccountType")
     private String financialAccountType;    
@@ -49,10 +55,12 @@ public class FinancialAccountTransactionCsv {
     public void setAccountData(AccountCsv accountData){
         this.setAccountId(accountData.getId());
         this.setAccountInvestmentObjectives(accountData.getInvestmentObjectives());
+        this.setAccountInvestmentExperience(accountData.getInvestmentExperience());
         this.setAccountMarketingSegment(accountData.getMarketingSegment());
         this.setAccountName(accountData.getName());
         this.setAccountServiceModel(accountData.getServiceModel());
         this.setAccountPrimaryContactName(accountData.getPrimaryContactEmail());
+        this.setAccountLastInteraction(accountData.getLastInteraction());
     }
 
     public String getId() {
@@ -184,6 +192,8 @@ public class FinancialAccountTransactionCsv {
             "AccountPrimaryContactName",
             "AccountMarketingSegment",
             "AccountInvestmentObjectives",
+            "AccountInvestmentExperience",
+            "AccountLastInteraction",
             "AccountServiceModel",
             "OwnerName",
             "FinancialAccountType",
@@ -204,6 +214,8 @@ public class FinancialAccountTransactionCsv {
             this.getAccountPrimaryContactName(),
             this.getAccountMarketingSegment(),
             this.getAccountInvestmentObjectives(),
+            this.getAccountInvestmentExperience(),
+            this.getAccountLastInteraction(),
             this.getAccountServiceModel(),
             this.getOwnerName(),
             this.getFinancialAccountType(),
@@ -214,5 +226,23 @@ public class FinancialAccountTransactionCsv {
         };
         
         return dataRecord;
-    }    
+    }
+    
+
+    public String getAccountInvestmentExperience() {
+        return this.accountInvestmentExperience;
+    }
+
+    public void setAccountInvestmentExperience(String accountInvestmentExperience) {
+        this.accountInvestmentExperience = accountInvestmentExperience;
+    }
+
+    public String getAccountLastInteraction() {
+        return this.accountLastInteraction;
+    }
+
+    public void setAccountLastInteraction(String accountLastInteraction) {
+        this.accountLastInteraction = accountLastInteraction;
+    }
+
 }
