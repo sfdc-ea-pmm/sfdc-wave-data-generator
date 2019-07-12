@@ -2146,13 +2146,13 @@ public class FSCDemoDataGen {
                         quotaItem.setStartDate(dateFormat.format(quotaStartDate.getTime()));
 
                         if (monthStep % 3 == 1) {
-                            quotaItem.setQuotaAmount(150000);
+                            quotaItem.setQuotaAmount(2500);
                         } 
                         else if(monthStep % 3 == 2){
-                            quotaItem.setQuotaAmount(500000);
+                            quotaItem.setQuotaAmount(8333);
                         }
                         else {
-                            quotaItem.setQuotaAmount(250000);
+                            quotaItem.setQuotaAmount(4166);
                         }
 
                         lstQuota.add(quotaItem);
