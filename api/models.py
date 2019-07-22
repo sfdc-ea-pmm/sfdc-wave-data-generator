@@ -15,6 +15,16 @@ class DatasetManager(object):
             ['BillingStreet', 'BillingCity', 'BillingState', 'BillingPostalCode', 'BillingCountry', 'Country', 'lat', 'lon', 'latlong', 'Address'],
             ['BillingState', 'BillingCity'])
         self.datasets['people'] = PeopleDataset()
+        self.datasets['address_japan'] = FileGeneratedDataset(
+            'Address - Japan',
+            os.path.join(dirname, 'data/address_Japanese.csv'),
+            ['BillingCountry', 'BillingPostalCode', 'BillingStreet', 'BillingCity', 'BillingState', 'Country', 'lon', 'lat', 'latlong', 'Address'],
+            ['BillingState', 'BillingCity'])
+        self.datasets['person_japan'] = FileGeneratedDataset(
+            'Person - Japan',
+            os.path.join(dirname, 'data/personName_Japanese.csv'),
+            ['FullName', 'FirstName', 'LastName', 'Gender'],
+            ['Gender'])
 
     def get_datasets(self):
         result = []
