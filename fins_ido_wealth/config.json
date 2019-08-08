@@ -1,0 +1,142 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "FscDemoAccount.csv",
+      "dateFields": [
+        "CREATEDDATE",
+        "LASTINTERACTION",
+        "LASTREVIEW",
+        "NEXTREVIEW",
+        "RELATIONSHIPSTARTDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoAccountSnapshot.csv",
+      "dateFields": [
+        "SnapshotDate",
+        "SnapshotTextDate",
+        "CreatedDate",
+        "LastInteraction",
+        "LastReview",
+        "NextReview",
+        "RelationshipStartDate"
+      ]
+    },
+    {
+      "fileName": "FscDemoActivity.csv",
+      "dateFields": [
+        "CREATEDDATE",
+        "ACTIVITYDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoCampaign.csv",
+      "dateFields": [
+        "STARTDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoCampaignMember.csv",
+      "dateFields": [
+        "CAMPAIGNSTARTDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoCase.csv",
+      "dateFields": [
+        "ACCOUNTLASTINTERACTION",
+        "CREATEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoEvent.csv",
+      "dateFields": [
+        "ACTIVITYDATE",
+        "LEADCREATEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoFinancialAccount.csv",
+      "dateFields": [
+        "CREATEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoFinancialAccountSnapshot.csv",
+      "dateFields": [
+        "SnapshotDate",
+        "SnapshotTextDate"
+      ]
+    },
+    {
+      "fileName": "FscDemoFinancialAccountTransaction.csv",
+      "dateFields": [
+        "ACCOUNTLASTINTERACTION",
+        "TRANSACTIONDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoFinancialAccountTransactionSnapshot.csv",
+      "dateFields": [
+        "SnapshotDate",
+        "SnapshotTextDate",
+        "AccountLastInteraction",
+        "TransactionDate"
+      ]
+    },
+    {
+      "fileName": "FscDemoFinancialGoal.csv",
+      "dateFields": [
+        "ACCOUNTLASTINTERACTION",
+        "CREATEDDATE",
+        "TARGETDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoFinancialGoalSnapshot.csv",
+      "dateFields": [
+        "SnapshotDate",
+        "SnapshotTextDate",
+        "CreatedDate",
+        "TargetDate"
+      ]
+    },
+    {
+      "fileName": "FscDemoLead.csv",
+      "dateFields": [
+        "CONVERTEDDATE",
+        "CONVERTEDOPPCLOSEDATE",
+        "CREATEDDATE",
+        "LASTACTIVITYDATE",
+        "LASTMODIFIEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoLeadHistory.csv",
+      "dateFields": [
+        "CREATEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoOpportunity.csv",
+      "dateFields": [
+        "CLOSEDATE",
+        "CREATEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoPipelineTrending.csv",
+      "dateFields": [
+        "CLOSEDATE",
+        "CREATEDDATE",
+        "OPPORTUNITYCLOSEDATE",
+        "VALIDFROMDATE",
+        "VALIDTODATE"
+      ]
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "FscDemoAccountSnapshot.csv",
+    "fieldName": "SnapshotDate"
+  }
+}
