@@ -2133,8 +2133,8 @@ public class FSCDemoDataGen {
             for (UserOwnerCsv oppOwner : opptyOwnersMap.values()) {
                 
                 Calendar quotaStartDate = Calendar.getInstance();
-                quotaStartDate.add(Calendar.YEAR, -2); // 2 years to the past
-                int currentYear = quotaStartDate.get(Calendar.YEAR);                
+                quotaStartDate.add(Calendar.YEAR, -1); // 1 year to the past
+                int currentYear = quotaStartDate.get(Calendar.YEAR);
 
                 for (int yearStep = 0; yearStep <= 2; yearStep++) {
                 
