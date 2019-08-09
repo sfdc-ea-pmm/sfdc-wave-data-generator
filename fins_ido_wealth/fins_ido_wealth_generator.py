@@ -39,6 +39,24 @@ def run(input_path, output_path, config_source):
 
         data_gen.add_formula_column(dateToShift, date_formula)
 
+    current_year = today.year
+    map_quota_year = {}
+    def quotas_date_formula(dateToShift):
+        def date_formula(column_values):
+            if column_values[dateToShift] != "":                
+                quota_year = column_values[dateToShift][:4]
+                d = column_values[dateToShift].replace(quota_year, map_quota_year[quota_year])
+                return d
+
+        date_index = data_gen.column_names[dateToShift]
+        dates = [e[date_index] for e in data_gen.rows]
+        max_year = max(dates)[:4]
+        min_year = min(dates)[:4]
+        map_quota_year[max_year] = str(current_year)
+        map_quota_year[min_year] = str(current_year - 1)
+
+        data_gen.add_formula_column(dateToShift, date_formula)
+
     if not output_path:
         output_path = 'output/'
 
@@ -50,7 +68,10 @@ def run(input_path, output_path, config_source):
         data_gen.load_source_file(input_path + file_name)
 
         for dateToShift in date_fields:
-            aux_date_formula(dateToShift)
+            if file_name != 'FscDemoQuota.csv':
+                aux_date_formula(dateToShift)
+            else:
+                quotas_date_formula(dateToShift)
             data_gen.apply_transformations()
         data_gen.write(output_path + file_name)
 
