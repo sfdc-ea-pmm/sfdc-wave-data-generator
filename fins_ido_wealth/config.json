@@ -3,11 +3,7 @@
     {
       "fileName": "FscDemoEarningsAndFees.csv",
       "dateFields": [
-        "CREATEDDATE",
-        "LASTINTERACTION",
-        "LASTREVIEW",
-        "NEXTREVIEW",
-        "RELATIONSHIPSTARTDATE"
+        "Date"
       ]
     },
     {
@@ -141,7 +137,8 @@
     },
     {
       "fileName": "FscDemoQuota.csv",
-      "dateFields": [        
+      "dateFields": [
+        "STARTDATE"  
       ]
     },
     {
