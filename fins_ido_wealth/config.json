@@ -1,7 +1,7 @@
 {
   "inputFiles": [
     {
-      "fileName": "FscDemoAccount.csv",
+      "fileName": "FscDemoEarningsAndFees.csv",
       "dateFields": [
         "CREATEDDATE",
         "LASTINTERACTION",
@@ -15,7 +15,6 @@
       "dateFields": [
         "SnapshotDate",
         "SnapshotTextDate",
-        "CreatedDate",
         "LastInteraction",
         "LastReview",
         "NextReview",
@@ -46,6 +45,12 @@
       "dateFields": [
         "ACCOUNTLASTINTERACTION",
         "CREATEDDATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoEarningsAndFees.csv",
+      "dateFields": [
+        "Date"
       ]
     },
     {
@@ -132,6 +137,16 @@
         "OPPORTUNITYCLOSEDATE",
         "VALIDFROMDATE",
         "VALIDTODATE"
+      ]
+    },
+    {
+      "fileName": "FscDemoQuota.csv",
+      "dateFields": [        
+      ]
+    },
+    {
+      "fileName": "FscDemoWeeks.csv",
+      "dateFields": [        
       ]
     }
   ],
