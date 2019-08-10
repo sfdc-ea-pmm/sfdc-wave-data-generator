@@ -2,7 +2,7 @@ import os
 from datetime import date
 
 from fins_ido_wealth import fins_ido_wealth_generator
-
+import split_data_file
 
 def run():
     today = date.today()
@@ -27,6 +27,12 @@ def run():
     fins_ido_wealth_generator.run(source_path, output_path, config_path)
 
     fins_ido_wealth_generator.run(source_path, archive_path, config_path)
+
+    suffix = '-dataPart-'
+    for f in os.listdir(output_path):
+        if suffix not in f:
+            r = split_data_file.split_if_needed(output_path, f, output_path, suffix, deleteSource=True)
+            print(r)
 
 if __name__ == "__main__":
     # execute only if running as a script
