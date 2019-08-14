@@ -8,6 +8,7 @@ import fundraising_gen
 import lead_trending_gen
 import social_gen
 import subscription_gen
+import fins_ido_wealth_gen
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -63,5 +64,8 @@ def scheduled_social_gen():
 def scheduled_subscription_gen():
     subscription_gen.run()
 
-
+@scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=19)
+def scheduled_fins_ido_wealth_gen():
+    fins_ido_wealth_gen.run()
+    
 scheduler.start()
