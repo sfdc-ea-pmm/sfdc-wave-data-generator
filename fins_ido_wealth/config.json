@@ -1,9 +1,13 @@
 {
   "inputFiles": [
     {
-      "fileName": "FscDemoEarningsAndFees.csv",
+      "fileName": "FscDemoAccount.csv",
       "dateFields": [
-        "Date"
+        "CREATEDDATE",
+        "LASTINTERACTION",
+        "LASTREVIEW",
+        "NEXTREVIEW",
+        "RELATIONSHIPSTARTDATE"
       ]
     },
     {
