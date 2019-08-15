@@ -141,22 +141,11 @@
     },
     {
       "fileName": "FscDemoQuota.csv",
-      "dateFields": [
-        "STARTDATE"  
-      ]
-    },
-    {
-      "fileName": "FscDemoWeeks.csv",
       "dateFields": [        
       ]
     },
     {
-      "fileName": "WM_Add_Assets_Prediction_Final.csv",
-      "dateFields": [
-      ]
-    },
-    {
-      "fileName": "WM_Churn_Predictions_Final.csv",
+      "fileName": "FscDemoWeeks.csv",
       "dateFields": [        
       ]
     }
