@@ -16,7 +16,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 scheduler = BlockingScheduler()
 
-@scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=8)
+@scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=7)
 def scheduled_fsc_wealth_cumulus_gen():
     fsc_wealth_cumulus_gen.run()
 
