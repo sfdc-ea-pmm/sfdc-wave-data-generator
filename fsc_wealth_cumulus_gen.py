@@ -26,7 +26,7 @@ def run():
 
     fsc_wealth_cumulus_generator.run(source_path, output_path, config_path)
 
-    fsc_wealth_cumulus_generator.run(source_path, archive_path, config_path)
+    # fsc_wealth_cumulus_generator.run(source_path, archive_path, config_path)
 
     suffix = '-dataPart-'
     if os.environ.get('WRITE_MODE') != 'S3':
