@@ -14,26 +14,46 @@ fromdir = ''
 def split(fromdir, fromfile, todir, suffix='part', chunksize=chunksize, deleteSource=False): 
     delete_later = ''
     fname, fext = fromfile.split('.')
+    transferConfig = boto3.s3.transfer.TransferConfig(multipart_threshold=chunksize/2)
 
     if os.environ.get('READ_MODE') == 'S3':
         client = boto3.client('s3')
         s3_bucket_name = os.environ.get('S3_BUCKET_NAME')
-        source_file_object = client.get_object(Bucket=s3_bucket_name, Key=fromdir+fromfile)
+        amount_read = 0
+        byte_range = 'bytes={}-{}'.format(amount_read, amount_read + chunksize)
+        source_file_object = client.get_object(Bucket=s3_bucket_name, Key=fromdir+fromfile, Range=byte_range)
+        totalSize = int(source_file_object['ContentRange'].split('/')[-1])
         source_file_body = source_file_object['Body']
         text_stream = codecs.getreader("utf-8")(source_file_body)
         partnum = 0
         while 1:                                       # eof=empty string from read
-            chunk = text_stream.read(chunksize)        # get next part <= chunksize
+            # chunk = text_stream.read(chunksize)      # get next part <= chunksize
+            chunk = text_stream.read()
             if not chunk: break
             partnum  = partnum+1
             filename = os.path.join(todir, ((fname+suffix+'%d'+'.'+fext) % partnum))
             chunk2 = io.BytesIO(bytes(chunk, 'utf-8'))
-            client.upload_fileobj(chunk2, s3_bucket_name, filename)
+            client.upload_fileobj(chunk2, s3_bucket_name, filename, Config=transferConfig)
+            print("File uploaded")
+            chunk2.close()          # release memory buffer for this chunk
+            text_stream.close()     # release memory buffer for this text stream
             client.put_object_acl(ACL='public-read', Bucket=s3_bucket_name, Key=filename)
-        text_stream.close(  )
+            print("Granted read-public")
+
+            amount_read = amount_read + chunksize
+            if amount_read+1 > totalSize:
+                break
+            byte_range = 'bytes={}-{}'.format(amount_read+1, amount_read + chunksize)
+            source_file_object = client.get_object(Bucket=s3_bucket_name, Key=fromdir+fromfile, Range=byte_range)
+            source_file_body = source_file_object['Body']
+            text_stream = codecs.getreader("utf-8")(source_file_body)
+
+        text_stream.close()
+        print("Text stream closed.")
 
         if deleteSource:
             client.delete_object(Bucket=s3_bucket_name, Key=fromdir+fromfile)
+            print("Source File deleted.")
 
     else: 
         if not os.path.exists(todir):                  # caller handles errors

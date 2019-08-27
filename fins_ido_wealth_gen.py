@@ -27,7 +27,7 @@ def run():
 
     fins_ido_wealth_generator.run(source_path, output_path, config_path)
 
-    fins_ido_wealth_generator.run(source_path, archive_path, config_path)
+    # fins_ido_wealth_generator.run(source_path, archive_path, config_path)
 
     suffix = '-dataPart-'
     if os.environ.get('WRITE_MODE') != 'S3':

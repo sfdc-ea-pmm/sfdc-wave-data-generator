@@ -64,7 +64,7 @@ def run(input_path, output_path, config_source):
 
         file_name = input_file.get('fileName')
         date_fields = input_file.get('dateFields', [])
-
+        print("Timeshifting process for ", file_name, " will start ...")
         data_gen.load_source_file(input_path + file_name)
 
         for dateToShift in date_fields:
@@ -72,7 +72,7 @@ def run(input_path, output_path, config_source):
                 aux_date_formula(dateToShift)
             else:
                 quotas_date_formula(dateToShift)
-            data_gen.apply_transformations()
+        data_gen.apply_transformations()
         data_gen.write(output_path + file_name)
 
 
