@@ -67,6 +67,9 @@ def run(input_path, output_path, config_source):
         print("Timeshifting process for ", file_name, " will start ...")
         data_gen.load_source_file(input_path + file_name)
 
+        if file_name not in ['FscDemoWeeks.csv', 'WM_Add_Assets_Prediction_Final.csv', 'WM_Churn_Predictions_Final.csv']:
+            data_gen.add_constant_column('LastProcessedDate', today.isoformat())
+
         for dateToShift in date_fields:
             if file_name != 'FscDemoQuota.csv':
                 aux_date_formula(dateToShift)
