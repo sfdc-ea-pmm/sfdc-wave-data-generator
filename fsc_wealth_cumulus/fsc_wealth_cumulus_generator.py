@@ -67,6 +67,11 @@ def run(input_path, output_path, config_source):
 
         data_gen.load_source_file(input_path + file_name)
 
+        if file_name != 'FscDemoWeeks.csv':
+            data_gen.add_constant_column('LastProcessedDate', today.isoformat())
+            if file_name == 'FscDemoQuota.csv':
+                data_gen.apply_transformations()
+
         for dateToShift in date_fields:
             if file_name != 'FscDemoQuota.csv':
                 aux_date_formula(dateToShift)

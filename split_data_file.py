@@ -14,9 +14,9 @@ fromdir = ''
 def split(fromdir, fromfile, todir, suffix='part', chunksize=chunksize, deleteSource=False): 
     delete_later = ''
     fname, fext = fromfile.split('.')
-    transferConfig = boto3.s3.transfer.TransferConfig(multipart_threshold=chunksize/2)
 
     if os.environ.get('READ_MODE') == 'S3':
+        transferConfig = boto3.s3.transfer.TransferConfig(multipart_threshold=chunksize/2)
         client = boto3.client('s3')
         s3_bucket_name = os.environ.get('S3_BUCKET_NAME')
         amount_read = 0
