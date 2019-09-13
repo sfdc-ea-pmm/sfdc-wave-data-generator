@@ -2109,6 +2109,14 @@ public class FSCDemoDataGen {
             int daysToShift = lObjDts.intValue();
             System.out.println("Days to shift dates: " + lDaysToShift);
 
+            // -- These variables are used to calculate the Quota Amount --
+            double oppty_amount_fiscal_quarter1 = 0;
+            double oppty_amount_fiscal_quarter2 = 0;
+            double oppty_amount_fiscal_quarter3 = 0;
+            double oppty_amount_fiscal_quarter4 = 0;
+            int current_year = Calendar.getInstance().get(Calendar.YEAR);
+            // ------------------------------------------------------------
+
             for (OpportunityCsv var : opptyMap.values()) {
                 String closeDateStr = var.getCloseDate();
                 Date closeDate = dateFormat.parse(closeDateStr);
@@ -2126,10 +2134,28 @@ public class FSCDemoDataGen {
                 RandomString rndStringSelected = stringSel.getRandomString();
                 UserOwnerCsv rndOwner = advisorsMap.get(rndStringSelected.getRandomString());
                 var.setOwnerSmallPhotoUrl(rndOwner.getSmallPhotoUrl());
+                
+                // Sum the amount of won opportunities closed in current year
+                int closeDate_year = Integer.parseInt(var.getCloseDate().substring(0,4));
+                if (var.getClosed() && var.getWon() && current_year == closeDate_year ) {
+                    int m = Integer.parseInt(var.getCloseDate().substring(5, 7));
+                    if ( m >= 7 && m <= 9) {
+                        oppty_amount_fiscal_quarter4 = oppty_amount_fiscal_quarter4 + var.getAmount();
+                    } else 
+                    if ( m >= 4 && m <= 6) {
+                        oppty_amount_fiscal_quarter3 = oppty_amount_fiscal_quarter3 + var.getAmount();
+                    } else 
+                    if ( m >= 1 && m <= 3) {
+                        oppty_amount_fiscal_quarter2 = oppty_amount_fiscal_quarter2 + var.getAmount();
+                    } else 
+                    if ( m >= 10 && m <= 12) {
+                        oppty_amount_fiscal_quarter1 = oppty_amount_fiscal_quarter1 + var.getAmount();
+                    }
+                }
             }
 
             // Quota file, data for each owner, 3 years quota
-            
+            int numberOfAdvisors = opptyOwnersMap.size();
             for (UserOwnerCsv oppOwner : opptyOwnersMap.values()) {
                 
                 Calendar quotaStartDate = Calendar.getInstance();
@@ -2145,16 +2171,38 @@ public class FSCDemoDataGen {
                         quotaStartDate.set(currentYear, monthStep - 1, 1);
                         quotaItem.setStartDate(dateFormat.format(quotaStartDate.getTime()));
 
-                        if (monthStep % 3 == 1) {
-                            quotaItem.setQuotaAmount(2500);
-                        } 
-                        else if(monthStep % 3 == 2){
-                            quotaItem.setQuotaAmount(8333);
+                        int startDate_year = quotaStartDate.get(1);
+                        if (startDate_year == current_year) {
+                            // This calculation accounts for fiscal quarters
+                            if (monthStep >= 7 && monthStep <= 9) {
+                                double quotaAmountFQ = ((oppty_amount_fiscal_quarter4/0.6)/(3*numberOfAdvisors));
+                                quotaItem.setQuotaAmount((int)quotaAmountFQ);
+                            } else
+                            if (monthStep >= 4 && monthStep <= 6) {
+                                double quotaAmountFQ = ((oppty_amount_fiscal_quarter3/0.6)/(3*numberOfAdvisors));
+                                quotaItem.setQuotaAmount((int)quotaAmountFQ);
+                            } else 
+                            if (monthStep >= 1 && monthStep <= 3) {
+                                double quotaAmountFQ = ((oppty_amount_fiscal_quarter2/0.6)/(3*numberOfAdvisors));
+                                quotaItem.setQuotaAmount((int)quotaAmountFQ);
+                            } else 
+                            if (monthStep >= 10 && monthStep <= 12) {
+                                double quotaAmountFQ = ((oppty_amount_fiscal_quarter1/0.6)/(3*numberOfAdvisors));
+                                quotaItem.setQuotaAmount((int)quotaAmountFQ);
+                            }
+                        } else { // if the quota is not from current year
+                            // This calculation considers calendar quarters
+                            if (monthStep % 3 == 1) {
+                                quotaItem.setQuotaAmount(2500);
+                            }
+                            else if(monthStep % 3 == 2){
+                                quotaItem.setQuotaAmount(8333);
+                            }
+                            else {
+                                quotaItem.setQuotaAmount(4166);
+                            }
                         }
-                        else {
-                            quotaItem.setQuotaAmount(4166);
-                        }
-
+                        
                         lstQuota.add(quotaItem);
                     }
 
