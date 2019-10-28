@@ -1,0 +1,38 @@
+{
+  "inputFiles": [
+    {
+      "fileName": "Contract.csv",
+      "dateFields": [
+        "CompanySignedDate",
+        "CustomerSignedDate",
+        "StartDate"
+      ]
+    },
+    {
+      "fileName": "Order.csv",
+      "dateFields": [
+        "EffectiveDate",
+        "EndDate"
+      ]
+    },
+    {
+      "fileName": "OrderItem.csv",
+      "dateFields": []
+    },
+    {
+      "fileName": "SalesAgreement.csv",
+      "dateFields": [
+        "StartDate",
+        "EndDate"
+      ]
+    },
+    {
+      "fileName": "SalesAgreementProduct.csv",
+      "dateFields": []
+    }
+  ],
+  "timeShiftingPivot": {
+    "fileName": "SalesAgreement.csv",
+    "fieldName": "LastProcessedDate"
+  }
+}
