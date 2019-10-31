@@ -1,0 +1,12 @@
+Account.Name,CompanySignedDate,CompanySigned.Name,ContractTerm,CustomerSignedDate,CustomerSigned.Name,CustomerSignedTitle,Owner.Name,Status,StartDate,External_Id__c,LastProcessedDate,analyticsdemo_batch_id__c
+"Ohana, Inc.",,,12,,,,Cindy Central,Draft,2019-09-12,MFG_Contract.1,2019-10-30,20191030112652769493
+Advanced Communications,2015-07-20,Elliot Executive,12,2009-08-08,Ed Flachbarth,CFO,Admin User,Draft,2019-03-31,MFG_Contract.2,2019-10-30,20191030112652769493
+"Ohana, Inc.",2007-10-01,Andrea Admin,24,2007-10-01,Lauren Bailey,VP of Support,Admin User,Draft,2019-04-04,MFG_Contract.3,2019-10-30,20191030112652769493
+"Biospan, LLC.",,,12,,,,Cindy Central,Draft,2017-05-28,MFG_Contract.4,2019-10-30,20191030112652769493
+"Ohana Construction, Inc.",,,12,,,,Admin User,Draft,2019-09-19,MFG_Contract.5,2019-10-30,20191030112652769493
+Ohana Tools,2020-02-12,Andrea Admin,12,2020-02-12,Lindsay Boyle,VP Purchasing,Admin User,Draft,2019-02-19,MFG_Contract.6,2019-10-30,20191030112652769493
+"Ohana Construction, Inc.",,,12,,,,Admin User,Draft,2019-10-06,MFG_Contract.7,2019-10-30,20191030112652769493
+Haven Enterprises,,,12,,,,Admin User,Draft,2019-10-06,MFG_Contract.8,2019-10-30,20191030112652769493
+"Ohana Construction, Inc.",,,12,,,,Admin User,Draft,2019-10-06,MFG_Contract.9,2019-10-30,20191030112652769493
+Haven Enterprises,,,12,,,,Admin User,Draft,2019-10-06,MFG_Contract.10,2019-10-30,20191030112652769493
+"Ohana, Inc.",,,12,,,,Admin User,Draft,2019-10-06,MFG_Contract.11,2019-10-30,20191030112652769493
