@@ -1,0 +1,217 @@
+{
+     "configs": [
+          {
+               "outputFile": "Contract.csv",
+               "mainInputFile": "Contract.source.csv",
+               "externalIdFormat": "MFG_Contract.",
+               "externalIdColumnName": "External_Id__c",
+               "buildFromColumn": "Id", 
+               "mappings": [
+                    {
+                         "sourceColumn": "AccountId",
+                         "foreignFile": "Account.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Account.Name"
+                    },
+                    {
+                         "sourceColumn": "CompanySignedId",
+                         "foreignFile": "User.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "CompanySigned.Name"
+                    },
+                    {
+                         "sourceColumn": "CustomerSignedId",
+                         "foreignFile": "Contact.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "CustomerSigned.Name"
+                    },
+                    {
+                         "sourceColumn": "OwnerId",
+                         "foreignFile": "User.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Owner.Name"
+                    }
+               ]
+          },
+          {
+               "outputFile": "SalesAgreement.csv",
+               "mainInputFile": "SalesAgreement.source.csv",
+               "externalIdFormat": "MFG_SalesAgreement.",
+               "externalIdColumnName": "External_Id__c",
+               "buildFromColumn": "Id", 
+               "mappings": [
+                    {
+                         "sourceColumn": "AccountId",
+                         "foreignFile": "Account.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Account.Name"
+                    },
+                    {
+                         "sourceColumn": "OwnerId",
+                         "foreignFile": "User.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Owner.Name"
+                    },
+                    {
+                         "sourceColumn": "PricebookId",
+                         "foreignFile": "Pricebook.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Pricebook.Name"
+                    }
+               ]
+          },
+          {
+               "outputFile": "SalesAgreementProduct.csv",
+               "mainInputFile": "SalesAgreementProduct.source.csv",
+               "externalIdFormat": "MFG_SalesAgreementProduct.",
+               "externalIdColumnName": "External_Id__c",
+               "buildFromColumn": "Id", 
+               "mappings": [
+                    {
+                         "sourceColumn": "SalesAgreementId",
+                         "foreignFile": "SalesAgreement.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "External_Id__c",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "SalesAgreement.External_Id__c"
+                    },
+                    {
+                         "sourceColumn": "PricebookEntryId",
+                         "foreignFile": "PricebookEntry.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "External_Id__c",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "PricebookEntry.External_Id__c"
+                    }
+               ]
+          },
+          {
+               "outputFile": "Order.csv",
+               "mainInputFile": "Order.source.csv",
+               "externalIdFormat": "MFG_Order.",
+               "externalIdColumnName": "External_Id__c",
+               "buildFromColumn": "Id", 
+               "mappings": [
+                    {
+                         "sourceColumn": "AccountId",
+                         "foreignFile": "Account.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Account.Name"
+                    },
+                    {
+                         "sourceColumn": "BillToContactId",
+                         "foreignFile": "Contact.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "CustomerSigned.Name"
+                    },
+                    {
+                         "sourceColumn": "CompanyAuthorizedById",
+                         "foreignFile": "User.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "CompanyAuthorizedBy.Name"
+                    },
+                    {
+                         "sourceColumn": "ContractId",
+                         "foreignFile": "Contract.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "External_Id__c",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Owner.External_Id__c"
+                    },
+                    {
+                         "sourceColumn": "CustomerAuthorizedById",
+                         "foreignFile": "Contact.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "CustomerAuthorizedBy.Name"
+                    },
+                    {
+                         "sourceColumn": "OwnerId",
+                         "foreignFile": "User.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Owner.Name"
+                    },
+                    {
+                         "sourceColumn": "Pricebook2Id",
+                         "foreignFile": "Pricebook.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Pricebook.Name"
+                    },
+                    {
+                         "sourceColumn": "ShipToContactId",
+                         "foreignFile": "Contact.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "ShipToContact.Name"
+                    },
+                    {
+                         "sourceColumn": "SalesAgreementId",
+                         "foreignFile": "SalesAgreement.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "External_Id__c",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "SalesAgreement.External_Id__c"
+                    }
+               ]
+          },
+          {
+               "outputFile": "OrderItem.csv",
+               "mainInputFile": "OrderItem.source.csv",
+               "externalIdFormat": "MFG_OrderItem.",
+               "externalIdColumnName": "External_Id__c",
+               "buildFromColumn": "Id", 
+               "mappings": [
+                    {
+                         "sourceColumn": "OrderId",
+                         "foreignFile": "Order.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "External_Id__c",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Order.External_Id__c"
+                    },
+                    {
+                         "sourceColumn": "PricebookEntryId",
+                         "foreignFile": "PricebookEntry.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "External_Id__c",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "PricebookEntry.External_Id__c"
+                    },
+                    {
+                         "sourceColumn": "Product2Id",
+                         "foreignFile": "Product.source.csv",
+                         "foreignMappingColumn": "Id",
+                         "foreignRetrieveColumn": "Name",
+                         "replaceSourceColumn": true,
+                         "replacementColumnName": "Product.Name"
+                    }
+               ]
+          }
+     ]
+}
