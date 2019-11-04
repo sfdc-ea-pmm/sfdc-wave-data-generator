@@ -1,2 +1,2 @@
 web: gunicorn server.wsgi --log-file -
-sched: python sched.py
+sched: python run_sched.py

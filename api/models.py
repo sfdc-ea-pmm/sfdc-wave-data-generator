@@ -3,36 +3,67 @@ from django.db import models
 from data_generator import DataGenerator
 from data_generator.formula import fake
 
+import boto3
+import json
+import logging
+import threading
 import os
-dirname = os.path.dirname(__file__)
+
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=20, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class DatasetManager(object):
+
+    client = boto3.client('s3')
+    s3_bucket_name = os.environ.get('S3_BUCKET_NAME')
+    metadata_file_name = "datasets/datasets_metadata.json"
+
     def __init__(self):
+        self.metadata_checksum = None
+        self.maybe_reload_metadata()
+
+
+    def maybe_reload_metadata(self):
+        logger.info("checking if metadata file has changed")
+        checksum = self.retrieve_metadata_checksum()
+
+        if self.metadata_checksum != checksum:
+            logger.info("metadata file changed!")
+            self.metadata_checksum = checksum
+            self.load_datasets()
+
+        # schedule every 30 minutes
+        thread = threading.Timer(30.0 * 60, self.maybe_reload_metadata)
+        thread.start()
+
+    def load_datasets(self):
         self.datasets = {}
-        self.datasets['france'] = FileGeneratedDataset(
-            'France',
-            os.path.join(dirname, 'data/France-GeoCoded.csv'),
-            ['BillingStreet', 'BillingCity', 'BillingState', 'BillingPostalCode', 'BillingCountry', 'Country', 'lat', 'lon', 'latlong', 'Address'],
-            ['BillingState', 'BillingCity'])
         self.datasets['people'] = PeopleDataset()
-        self.datasets['address_japan'] = FileGeneratedDataset(
-            'Address - Japan',
-            os.path.join(dirname, 'data/address_Japanese.csv'),
-            ['BillingCountry', 'BillingPostalCode', 'BillingStreet', 'BillingCity', 'BillingState', 'Country', 'lon', 'lat', 'latlong', 'Address'],
-            ['BillingState', 'BillingCity'])
-        self.datasets['person_japan'] = FileGeneratedDataset(
-            'Person - Japan',
-            os.path.join(dirname, 'data/personName_Japanese.csv'),
-            ['FullName', 'FirstName', 'LastName', 'Gender'],
-            ['Gender'])
+        self.load_s3_datasets()
+
+    def retrieve_metadata_checksum(self):
+        metadata_file_object = self.client.get_object(Bucket=self.s3_bucket_name, Key=self.metadata_file_name)
+        return metadata_file_object['ETag']
+
+    def load_metadata_from_s3(self):
+        metadata_file_object = self.client.get_object(Bucket=self.s3_bucket_name, Key=self.metadata_file_name)
+        metadata_file_content = metadata_file_object['Body'].read().decode('utf-8')
+        return json.loads(metadata_file_content)
+
+    def load_s3_datasets(self):
+        metadata = self.load_metadata_from_s3()
+        for dataset in metadata['datasets']:
+            self.datasets[dataset['dataset_id']] = FileGeneratedDataset(
+                dataset['dataset_label'], 'datasets/' + dataset['s3_filename'], dataset['source_columns'], dataset['string_filters'])
 
     def get_datasets(self):
         result = []
         for key, value in self.datasets.items():
-            result.append(self.get_dataset(key))
+            result.append(self.get_dataset(key, is_preview=True))
         return result
 
-    def get_dataset(self, dataset_name, selected_filters=None, columns=None, count=5):
+    def get_dataset(self, dataset_name, selected_filters=None, columns=None, count=5, is_preview=False):
         dataset = self.datasets[dataset_name]
         result = {}
         result['name'] = dataset_name
@@ -46,7 +77,11 @@ class DatasetManager(object):
                 'options': filter.options
             })
         result['filters'] = filters
-        result['data'] = dataset.generate(selected_filters, columns, count)
+
+        if is_preview is True and selected_filters is None and columns is None and count == 5:
+            result['data'] = dataset.generate_preview()
+        else:
+            result['data'] = dataset.generate(selected_filters, columns, count)
         return result
 
 
@@ -84,11 +119,18 @@ class PeopleDataset(object):
 
         self.columns = ['Gender', 'First Name', 'Last Name', 'Name']
 
+        self.preview = None
+
     def get_filters(self):
         return self.filters
 
     def get_columns(self):
         return self.columns
+
+    def generate_preview(self):
+        if self.preview is None:
+            self.preview = self.generate()
+        return self.preview
 
     def generate(self, selected_filters=None, columns=None, count=5):
         if selected_filters is None:
@@ -129,15 +171,16 @@ class FileGeneratedDataset(object):
         self.source_file_name = source_file_name
         self.columns = columns
         self.string_filters = string_filters
+        self.preview = None
 
         data_gen = DataGenerator()
 
         if columns is None:
-            data_gen.load_source_file_from_disk(self.source_file_name)
+            data_gen.load_source_file_from_s3(self.source_file_name)
         else:
-            data_gen.load_source_file_from_disk(self.source_file_name, columns)
+            data_gen.load_source_file_from_s3(self.source_file_name, columns)
 
-        filters_dataset = data_gen.load_dataset_from_disk('filters', source_file_name)
+        filters_dataset = data_gen.load_dataset_from_s3('filters', source_file_name)
 
         for filter_name in string_filters:
             options_list = filters_dataset.unique(filter_name)
@@ -154,6 +197,11 @@ class FileGeneratedDataset(object):
     def get_columns(self):
         return self.columns
 
+    def generate_preview(self):
+        if self.preview is None:
+            self.preview = self.generate()
+        return self.preview
+
     def generate(self, selected_filters=None, columns=None, count=5):
         if selected_filters is None:
             selected_filters = {}
@@ -161,14 +209,13 @@ class FileGeneratedDataset(object):
             columns = self.get_columns()
 
         data_gen = DataGenerator()
-        data_gen.load_source_file_from_disk(self.source_file_name, columns)
+        data_gen.load_source_file_from_s3(self.source_file_name, columns)
 
         for filter_key, filter_value in selected_filters.items():
             data_gen.filter(lambda cv: cv[filter_key] == filter_value)
 
         if data_gen.row_count <= 0:
             return []
-
 
         remaining_count = count
         result = []
@@ -182,6 +229,3 @@ class FileGeneratedDataset(object):
             remaining_count -= data_gen.row_count
 
         return result
-
-
-dataset_manager = DatasetManager()
