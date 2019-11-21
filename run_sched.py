@@ -11,10 +11,15 @@ import subscription_gen
 import fins_ido_wealth_gen
 import fsc_wealth_gen
 import fsc_wealth_cumulus_gen
+import mfg_gen
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 scheduler = BlockingScheduler()
+
+@scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=6)
+def scheduled_mfg_gen():
+    mfg_gen.run()
 
 @scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=7)
 def scheduled_fsc_wealth_cumulus_gen():
