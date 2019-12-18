@@ -9,6 +9,10 @@ import logging
 import threading
 import os
 
+import os.path
+from os import path
+
+dirname = os.path.dirname(__file__)
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=20, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -175,12 +179,24 @@ class FileGeneratedDataset(object):
 
         data_gen = DataGenerator()
 
-        if columns is None:
-            data_gen.load_source_file_from_s3(self.source_file_name)
-        else:
-            data_gen.load_source_file_from_s3(self.source_file_name, columns)
+        self.local_file_name = os.path.join(dirname, source_file_name)
+        self.local_file_exists = path.exists(self.local_file_name)
 
-        filters_dataset = data_gen.load_dataset_from_s3('filters', source_file_name)
+        if columns is None:
+            if self.local_file_exists:
+                data_gen.load_source_file_from_disk(self.local_file_name)
+            else:
+                data_gen.load_source_file_from_s3(self.source_file_name)
+        else:
+            if self.local_file_exists:
+                data_gen.load_source_file_from_disk(self.local_file_name, columns)
+            else:
+                data_gen.load_source_file_from_s3(self.source_file_name, columns)
+
+        if self.local_file_exists:
+            filters_dataset = data_gen.load_dataset_from_disk('filters', self.local_file_name)
+        else:
+            filters_dataset = data_gen.load_dataset_from_s3('filters', self.source_file_name)
 
         for filter_name in string_filters:
             options_list = filters_dataset.unique(filter_name)
@@ -209,7 +225,10 @@ class FileGeneratedDataset(object):
             columns = self.get_columns()
 
         data_gen = DataGenerator()
-        data_gen.load_source_file_from_s3(self.source_file_name, columns)
+        if self.local_file_exists:
+            data_gen.load_source_file_from_disk(self.local_file_name, columns)
+        else:
+            data_gen.load_source_file_from_s3(self.source_file_name, columns)
 
         for filter_key, filter_value in selected_filters.items():
             data_gen.filter(lambda cv: cv[filter_key] == filter_value)
@@ -229,3 +248,13 @@ class FileGeneratedDataset(object):
             remaining_count -= data_gen.row_count
 
         return result
+
+
+dataset_manager = None
+
+
+def get_dataset_manager():
+    global dataset_manager
+    if dataset_manager is None:
+        dataset_manager = DatasetManager()
+    return dataset_manager

@@ -8,9 +8,9 @@ from rest_framework.response import Response
 from data_generator import DataGenerator
 from data_generator.formula import fake
 
-from api.models import DatasetManager
+from api.models import get_dataset_manager
 
-dataset_manager = DatasetManager()
+dataset_manager = get_dataset_manager()
 
 
 @api_view(['GET', 'POST'])
