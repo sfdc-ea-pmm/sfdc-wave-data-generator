@@ -49,6 +49,57 @@ case_oppty = 'service/data/output/Opportunity.csv'
 case_agent_work = 'service/data/output/AgentWork.csv'
 case_user_presence = 'service/data/output/UserServicePresence.csv'
 
+## sales_service ##
+source_data = 'sales_service/data/input/WA_Fn-UseC_-Sales-Win-Loss.csv'
+source_users = 'sales_service/data/input/Users.csv'
+source_oppty_shape = 'sales_service/data/input/OpportunityShape.csv'
+oppty_temporal_path = 'sales_service/data/output/archive/{}/'
+oppty_latest_path = 'sales_service/data/output/latest/'
+oppty_shape = 'sales_service/data/output/OpportunityShape.csv'
+oppty = 'sales_service/data/output/Opportunity.csv'
+oppty_accounts = 'sales_service/data/output/Account.csv'
+oppty_accounts_test = 'sales_service/data/output/Account Test.csv'
+oppty_users = 'sales_service/data/output/User.csv'
+oppty_managers = 'sales_service/data/output/Manager.csv'
+oppty_products = 'sales_service/data/output/Product2.csv'
+oppty_pricebook = 'sales_service/data/output/PricebookEntry.csv'
+oppty_line_item = 'sales_service/data/output/OpportunityLineItem.csv'
+oppty_history = 'sales_service/data/output/OpportunityHistory.csv'
+oppty_cases = 'sales_service/data/output/Case.csv'
+oppty_tasks = 'sales_service/data/output/Task.csv'
+oppty_events = 'sales_service/data/output/Event.csv'
+oppty_leads = 'sales_service/data/output/Lead.csv'
+oppty_contacts = 'sales_service/data/output/Contact.csv'
+oppty_forecasting_quota = 'sales_service/data/output/ForecastingQuota.csv'
+oppty_forecasting_user = 'sales_service/data/output/ForecastingUser.csv'
+oppty_quota = 'sales_service/data/output/Quota.csv'
+
+case_temporal_path = 'sales_service/data/output/archive/{}/'
+case_latest_path = 'sales_service/data/output/latest/'
+source_case_data = 'sales_service/data/input/Retail_ex_wpandq_filtered.csv'
+source_case_shape = 'sales_service/data/input/CaseShape.csv'
+case_shape = 'sales_service/data/output/CaseShape.csv'
+case_data = 'sales_service/data/output/Case.csv'
+case_history = 'sales_service/data/output/CaseHistory.csv'
+case_accounts = 'sales_service/data/output/Account.csv'
+case_users = 'sales_service/data/output/User.csv'
+case_managers = 'sales_service/data/output/Manager.csv'
+case_contacts = 'sales_service/data/output/Contact.csv'
+case_articles = 'sales_service/data/output/CaseArticle.csv'
+case_knowledge_articles = 'sales_service/data/output/KCSArticle_ka.csv'
+case_knowledge_article_versions = 'sales_service/data/output/KCSArticle_kav.csv'
+case_knowledge_article_votestat = 'sales_service/data/output/KCSArticle_VoteStat.csv'
+case_knowledge_article_viewstat = 'sales_service/data/output/KCSArticle_ViewStat.csv'
+case_knowledge_article_datacat = 'sales_service/data/output/KCSArticle_DataCategorySelection.csv'
+case_events = 'sales_service/data/output/Event.csv'
+case_tasks = 'sales_service/data/output/Task.csv'
+case_livechat_transcripts = 'sales_service/data/output/LiveChatTranscript.csv'
+case_livechat_transcript_events = 'sales_service/data/output/LiveChatTranscriptEvent.csv'
+case_oppty = 'sales_service/data/output/Opportunity.csv'
+case_agent_work = 'sales_service/data/output/AgentWork.csv'
+case_user_presence = 'sales_service/data/output/UserServicePresence.csv'
+## /sales_service ##
+
 
 # **********************
 # Metadata Values Maps
@@ -258,7 +309,7 @@ forecast_category_name = {
 # REVENUE
 # convert categorical from 1-5 to SMB etc.
 def convert_revenue_size(revenue_cat):
-    return client_size_rev(revenue_cat)
+    return client_size_rev[revenue_cat]
 
 
 # this is where we convert from categorical into continuous - but kind of random
