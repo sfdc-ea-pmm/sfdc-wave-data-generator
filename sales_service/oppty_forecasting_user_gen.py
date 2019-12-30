@@ -7,7 +7,8 @@ def run(batch_id, source_file_name, output_file_name):
     source_columns = ['External_Id__c','UserRole.Name']
     data_gen.load_source_file(source_file_name, source_columns)
 
-    data_gen.filter(lambda cv: 'RVP' in cv['UserRole.Name'])
+    # data_gen.filter(lambda cv: 'RVP' in cv['UserRole.Name']) # commented out because using shape file from service with no RVP value in UserRole.Name
+    data_gen.filter(lambda cv: 'CSM' in cv['UserRole.Name']) # comes from Service
 
     data_gen.rename_column('External_Id__c', 'ForecastUser.External_Id__c')
 

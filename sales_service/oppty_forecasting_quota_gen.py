@@ -13,6 +13,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today):
     data_gen.load_source_file(source_file_name, source_columns)
 
     data_gen.filter(lambda cv: 'RVP' not in cv['UserRole.Name'])
+    data_gen.filter(lambda cv: 'CSM' not in cv['UserRole.Name']) # comes from Service
 
 
     data_gen.rename_column('External_Id__c', 'QuotaOwner.External_Id__c')
