@@ -1,5 +1,7 @@
 # Wave Data Generator
 
+Detailed Docs Here: https://sfdc-wave-data-generator.herokuapp.com/static/index.html
+
 ## Requirements
 
 * Python version 3.6 installed locally. See the installation guides for 
