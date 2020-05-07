@@ -38,21 +38,17 @@ def run(batch_id, source_file_name, output_file_name):
         'CreatedDate__c']
     shape_dataset = data_gen.load_dataset('shape', source_file_name, shape_columns)
 
-
     # build map of account values
     shape_account_map = shape_dataset.group_by('AccountExternalId__c')
-
 
     # helper method to get shape data related to an account
     def get_shape_data(column_values, shape_column_name):
         return shape_account_map.get(column_values['External_Id__c'])[0].get(shape_column_name)
 
-
     # generate owner
     def owner_formula(column_values):
         return get_shape_data(column_values, 'Owner.External_Id__c')
     data_gen.add_formula_column('Owner.External_Id__c', owner_formula)
-
 
     # update number employees based on shape data
     def employees_formula(column_values):
@@ -60,35 +56,28 @@ def run(batch_id, source_file_name, output_file_name):
         return randint(*account.client_size_employees_bands[employees])
     data_gen.add_formula_column('NumberOfEmployees', employees_formula)
 
-
     # update annual revenue based on shape data
     def revenue_formula(column_values):
         revenue = get_shape_data(column_values, 'AccountAnnualRevenue__c')
         return 1000 * randint(*account.client_size_rev_bands[revenue])
     data_gen.add_formula_column('AnnualRevenue', revenue_formula)
 
-
     # generate account source
     data_gen.add_formula_column('AccountSource', formula=account.account_source)
-
 
     # update type based on shape data
     def type_formula(column_values):
         return get_shape_data(column_values, 'AccountAnnualRevenue__c')
     data_gen.add_formula_column('Type', type_formula)
 
-
     # generate industry
     data_gen.add_formula_column('Industry', formula=account.account_industry)
-
 
     # generate billing street
     data_gen.add_formula_column('BillingStreet', formula=lambda: fake.building_number() + ' ' + fake.street_name())
 
-
     # generate billing city
     data_gen.add_formula_column('BillingCity', formula=fake.city)
-
 
     # update billing state based on shape data
     def state_formula(column_values):
@@ -96,16 +85,12 @@ def run(batch_id, source_file_name, output_file_name):
         return choice(account.region_state_map[region])
     data_gen.add_formula_column('BillingState', state_formula)
 
-
     # generate billing country
     data_gen.add_constant_column('BillingCountry', 'USA')
 
 
     # generate year started
     data_gen.add_formula_column('YearStarted', formula=account.account_year_started)
-
-    # generate industry
-    data_gen.add_formula_column('Industry', formula=account.account_industry)
 
     # generate ownership
     data_gen.add_formula_column('Ownership', formula=account.account_ownership)
@@ -116,7 +101,6 @@ def run(batch_id, source_file_name, output_file_name):
     # generate rating
     data_gen.add_formula_column('Rating', formula=account.account_rating)
 
-
     # generate earliest created date
     def create_date_formula(column_values):
         opptys = shape_account_map.get(column_values['External_Id__c'])
@@ -124,7 +108,6 @@ def run(batch_id, source_file_name, output_file_name):
         create_dates.sort()
         return create_dates[0]
     data_gen.add_formula_column('CreatedDate__c', create_date_formula)
-
 
     # generate earliest close date
     def close_date_formula(column_values):
@@ -140,7 +123,6 @@ def run(batch_id, source_file_name, output_file_name):
     # apply transformations and write file
     data_gen.apply_transformations()
     data_gen.write(output_file_name)
-
 
 if __name__ == "__main__":
     # execute only if running as a script

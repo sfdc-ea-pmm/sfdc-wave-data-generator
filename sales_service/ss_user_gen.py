@@ -14,8 +14,6 @@ def run(batch_id, source_file_name, output_file_name, manager_output_file_name):
     # load source file
     source_columns = ['Owner.External_Id__c', 'Team__c']
     data_gen.load_source_file(source_file_name, source_columns)
-
-
     data_gen.unique()
 
     # rename columns
@@ -23,9 +21,9 @@ def run(batch_id, source_file_name, output_file_name, manager_output_file_name):
     data_gen.rename_column('Team__c', 'UserRole.Name')
 
     # add 3 manager users
-    west_manager = ['W_Services_User.M.' + str(len(data_gen.rows) + 1), 'West CSM']
-    east_manager = ['W_Services_User.M.' + str(len(data_gen.rows) + 2), 'East CSM']
-    central_manager = ['W_Services_User.M.' + str(len(data_gen.rows) + 3), 'Central CSM']
+    west_manager = ['W_User.M.' + str(len(data_gen.rows) + 1), 'West CSM']
+    east_manager = ['W_User.M.' + str(len(data_gen.rows) + 2), 'East CSM']
+    central_manager = ['W_User.M.' + str(len(data_gen.rows) + 3), 'Central CSM']
     ## managers from Sales ##
     # west_manager = ['RVP West', 'W_Sales_User.M.' + str(len(data_gen.rows) + 1)]
     # east_manager = ['RVP East', 'W_Sales_User.M.' + str(len(data_gen.rows) + 2)]
@@ -35,7 +33,6 @@ def run(batch_id, source_file_name, output_file_name, manager_output_file_name):
     data_gen.rows.append(west_manager)
     data_gen.rows.append(east_manager)
     data_gen.rows.append(central_manager)
-
 
     # generate company name
     data_gen.add_formula_column('CompanyName', formula=fake.company)
@@ -73,7 +70,6 @@ def run(batch_id, source_file_name, output_file_name, manager_output_file_name):
     data_gen.add_constant_column('LanguageLocaleKey', 'en_US')
     data_gen.add_constant_column('EmailEncodingKey', 'ISO-8859-1')
     data_gen.add_constant_column('ForecastEnabled', 'true') # this comes from Sales
-
 
     data_gen.add_constant_column('UserPermissionsAvantgoUser', 'false')
     data_gen.add_constant_column('UserPermissionsCallCenterAutoLogin', 'false')

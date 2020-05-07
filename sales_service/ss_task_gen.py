@@ -13,10 +13,8 @@ from datetime import timedelta
 from numpy.random import choice
 from numpy.random import randint
 
-
 today = date.today()
 today = datetime.combine(today, datetime.min.time())
-
 
 def run(batch_id, source_file_name, output_file_name, reference_datetime=today):
     data_gen = DataGenerator()
@@ -35,23 +33,15 @@ def run(batch_id, source_file_name, output_file_name, reference_datetime=today):
     data_gen.rename_column('LastActivityDate__c', 'ActivityDate')
     data_gen.rename_column('Team__c', 'CallObject')
 
-
     # generate a random number of tasks per case
     data_gen.duplicate_rows(duplication_factor=lambda: randint(0, 3))
-
-
-    data_gen.add_formula_column('External_Id__c', formula=lambda: 'W_Services_Task.' + str(data_gen.current_row + 1))
-
-
+    data_gen.add_formula_column('External_Id__c', formula=lambda: 'W_Task.' + str(data_gen.current_row + 1))
     data_gen.add_formula_column('TaskSubtype', formula=task.task_subtype)
     # for oppty> data_gen.add_formula_column('TaskSubtype', formula=task.oppty_task_subtype)
     data_gen.add_formula_column('CallDurationInSeconds', formula=task.task_call_duration)
     data_gen.add_formula_column('CallDisposition', formula=task.task_call_disposition)
     data_gen.add_formula_column('CallType', formula=task.task_call_type)
-
-
     data_gen.add_formula_column('Status', formula=task.task_status)
-
     data_gen.add_formula_column('Priority', formula=task.task_priority)
 
     def create_date_formula(column_values):

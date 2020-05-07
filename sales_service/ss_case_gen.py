@@ -20,7 +20,7 @@ def run(batch_id, source_file_name, output_file_name, filter_function=None):
     data_gen.load_source_file(source_file_name)
 
     data_gen.add_formula_column('Contact.External_Id__c',
-                                lambda cv: cv['Account.External_Id__c'].replace('W_Services_Account', 'W_Services_Contact'))
+                                lambda cv: cv['Account.External_Id__c'].replace('W_Account', 'W_Contact'))
 
     # add a UUID for each row that is created in this batch
     data_gen.add_constant_column('analyticsdemo_batch_id__c', batch_id)

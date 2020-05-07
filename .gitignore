@@ -17,8 +17,10 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
-
-
 __pycache__/
 split_data_file.pyc
 .vscode/settings.json
+
+# Generator MISC #
+######################
+*.csv
