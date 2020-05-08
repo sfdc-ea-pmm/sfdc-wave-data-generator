@@ -12,7 +12,6 @@ from datetime import timedelta
 today = date.today()
 today_datetime = datetime.combine(today, datetime.min.time())
 
-
 def run(batch_id, source_file_name, output_file_name, filter_function=None):
     data_gen = DataGenerator()
 
@@ -24,7 +23,6 @@ def run(batch_id, source_file_name, output_file_name, filter_function=None):
 
     # add a UUID for each row that is created in this batch
     data_gen.add_constant_column('analyticsdemo_batch_id__c', batch_id)
-
 
     data_gen.apply_transformations()
 

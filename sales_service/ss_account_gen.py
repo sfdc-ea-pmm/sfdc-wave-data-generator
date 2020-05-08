@@ -7,24 +7,19 @@ from numpy.random import choice
 from numpy.random import randint
 from numpy.random import normal
 
-
 def run(batch_id, source_file_name, output_file_name):
     data_gen = DataGenerator()
-
 
     # load source file
     source_columns = ['AccountExternalId__c', 'AccountName__c']
     data_gen.load_source_file(source_file_name, source_columns)
 
-
     # rename columns
     data_gen.rename_column('AccountExternalId__c', 'External_Id__c')
     data_gen.rename_column('AccountName__c', 'Name')
 
-
     # filter out duplicate data
     data_gen.unique()
-
 
     # load shape data as dataset
     shape_columns = [
@@ -87,7 +82,6 @@ def run(batch_id, source_file_name, output_file_name):
 
     # generate billing country
     data_gen.add_constant_column('BillingCountry', 'USA')
-
 
     # generate year started
     data_gen.add_formula_column('YearStarted', formula=account.account_year_started)

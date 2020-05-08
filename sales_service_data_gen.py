@@ -42,7 +42,6 @@ from sales_service import case_shape_gen
 from sales_service import case_user_presence_gen
 #
 
-
 from sales_service import ss_account_gen
 from sales_service import ss_contact_gen
 from sales_service import ss_event_gen
@@ -50,13 +49,13 @@ from sales_service import ss_case_gen
 from sales_service import ss_task_gen
 from sales_service import ss_user_gen
 
-
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
-
+from data_generator import DataGenerator
 
 def run():
+    data_gen = DataGenerator()
     today = date.today()
     today_datetime = datetime.combine(today, datetime.min.time())
     output_path = definitions.oppty_temporal_path.format(today.isoformat())
@@ -203,10 +202,14 @@ def run():
     case_shape_gen.run(batch_id, definitions.source_case_shape, case_shape_file, today_datetime)
 
     # generate case
+    
     case_file = output_path + 'Case.csv'
     cutoff_date = today_datetime - timedelta(days=30 * 2)
+    account_dataset = data_gen.load_dataset('account', account_file, ['External_Id__c'])
+    account_ids = account_dataset.unique('External_Id__c')
+    print(account_ids)
     ss_case_gen.run(batch_id, case_shape_file, case_file,
-                        lambda cv: dateutil.parser.parse(cv['CreatedDate__c']) >= cutoff_date)
+                        lambda cv: dateutil.parser.parse(cv['CreatedDate__c']) >= cutoff_date and cv['Account.External_Id__c'] in account_ids)
 
     # generate accounts
     # account_file = output_path + 'Account.csv'
