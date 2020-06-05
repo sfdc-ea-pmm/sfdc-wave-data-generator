@@ -49,7 +49,7 @@ case_oppty = 'service/data/output/Opportunity.csv'
 case_agent_work = 'service/data/output/AgentWork.csv'
 case_user_presence = 'service/data/output/UserServicePresence.csv'
 
-## sales_service ##
+## sales_service - TODO: This needs to be redefined to avoid overwrite sales and service generators ##
 source_data = 'sales_service/data/input/WA_Fn-UseC_-Sales-Win-Loss.csv'
 source_users = 'sales_service/data/input/Users.csv'
 source_oppty_shape = 'sales_service/data/input/OpportunityShape.csv'

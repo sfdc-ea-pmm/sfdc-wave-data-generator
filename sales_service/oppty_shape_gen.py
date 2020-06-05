@@ -18,10 +18,8 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
     def get_close_date(values):
         return dateutil.parser.parse(values['CloseDate'])
 
-
     def get_create_date(values):
         return dateutil.parser.parse(values['CreatedDate__c'])
-
 
     data_gen = DataGenerator()
 
@@ -33,7 +31,6 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
 
     # add an age column
     data_gen.add_copy_column('Age__c', 'TimeToClose__c')
-
 
     # generate a close date
     def close_date_formula(column_values):
