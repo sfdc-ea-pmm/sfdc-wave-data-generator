@@ -5,7 +5,6 @@ from data_generator.formula import fake
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
-from time import mktime
 from numpy.random import choice
 from random import randint
 from random import uniform
@@ -56,7 +55,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
     current_count = 1
     new_rows = []
     row_count = len(data_gen.rows)
-    for _ in range(row_count):
+    for i in range(row_count):
         row = data_gen.rows.pop()
         column_values = data_gen.row_to_column_values(row)
 
@@ -85,7 +84,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
         current_count += 1
         new_rows.append(data_gen.column_values_to_row(column_values))
 
-        # next_create_date = event_date
+        next_create_date = event_date
         next_stage_name = final_stage_name
         next_forecast_category = final_forecast_category
         next_close_date = close_date
@@ -96,7 +95,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
         expand = False
         reduce = False
         reopen = False
-        # initialized = False
+        initialized = False
 
         # generate events in reverse order until create_date
         for current_stage_count in range(stage_count):
@@ -114,11 +113,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
 
             event_date_range_end = event_date
             event_date_range_start = create_date + (event_date - create_date) / 2
-            if mktime(event_date_range_start.timetuple()) > mktime(event_date_range_end.timetuple()):
-                # check added due to some dates which are not being correctly 'translated' to unix timestamps
-                event_date = event_date_range_end
-            else:
-                event_date = fake.date_time_between_dates(event_date_range_start, event_date_range_end)
+            event_date = fake.date_time_between_dates(event_date_range_start, event_date_range_end)
 
             # if next stage is closed, make the previous event a stage change
             if 'Closed' in next_stage_name:
@@ -142,7 +137,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
                 elif event == 'Initial State':
                     curr_stage_name = 'Qualification'
                     curr_forecast_category = 'Pipeline'
-                    # initialized = True
+                    initialized = True
                 elif event == 'Expand' and not expand:
                     curr_amount = next_amount - int(uniform(.15, .45) * final_amount)
                     if curr_amount <= 0:

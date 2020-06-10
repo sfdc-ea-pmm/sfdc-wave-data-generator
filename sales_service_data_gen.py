@@ -28,13 +28,17 @@ from sales_service import case_live_chat_gen
 from sales_service import case_shape_gen
 from sales_service import case_user_presence_gen
 
-
 from sales_service import ss_account_gen
 from sales_service import ss_contact_gen
 from sales_service import ss_event_gen
 from sales_service import ss_case_gen
 from sales_service import ss_task_gen
 from sales_service import ss_user_gen
+
+from sales_service import sales_event_gen
+from sales_service import sales_task_gen
+from sales_service import service_event_gen
+from sales_service import service_task_gen
 
 from datetime import date
 from datetime import datetime
@@ -84,9 +88,13 @@ def run():
     history_file = output_path + 'OpportunityHistory.csv'
     oppty_history_gen.run(batch_id, oppty_file, history_file, today_datetime)
 
+    # generate tasks from opptys
+    sales_tasks_file = output_path + 'SalesTask.csv'
+    sales_task_gen.run(batch_id, oppty_file, sales_tasks_file, today_datetime)
+
     # generate events
-    event_file = output_path + 'Event.csv'
-    ss_event_gen.run(batch_id, oppty_file, event_file, today_datetime)
+    sales_event_file = output_path + 'SalesEvent.csv'
+    sales_event_gen.run(batch_id, oppty_file, sales_event_file, today_datetime)
 
     # generate leads
     lead_file = output_path + 'Lead.csv'
@@ -126,8 +134,11 @@ def run():
     latest_history_file = latest_output_path + 'OpportunityHistory.csv'
     copy_data_file.run(history_file, latest_history_file)
 
-    latest_event_file = latest_output_path + 'Event.csv'
-    copy_data_file.run(event_file, latest_event_file)
+    latest_sales_task_file = latest_output_path + 'SalesTask.csv'
+    copy_data_file.run(sales_tasks_file, latest_sales_task_file)
+
+    latest_sales_event_file = latest_output_path + 'SalesEvent.csv'
+    copy_data_file.run(sales_event_file, latest_sales_event_file)
 
     latest_lead_file = latest_output_path + 'Lead.csv'
     copy_data_file.run(lead_file, latest_lead_file)
@@ -139,7 +150,6 @@ def run():
     case_shape_gen.run(batch_id, definitions.source_case_shape, case_shape_file, today_datetime)
 
     # generate case
-    
     case_file = output_path + 'Case.csv'
     cutoff_date = today_datetime - timedelta(days=30 * 2)
     account_dataset = data_gen.load_dataset('account', account_file, ['External_Id__c'])
@@ -178,8 +188,14 @@ def run():
     agent_work_files = case_agent_work_gen.run(batch_id, case_file, agent_work_file, today_datetime)
 
     # generate tasks
-    task_file = output_path + 'Task.csv'
-    ss_task_gen.run(batch_id, case_file, task_file, today_datetime)
+    sales_tasks_dataset = data_gen.load_dataset('sales_tasks', sales_tasks_file, ['External_Id__c'])
+    service_task_file = output_path + 'ServiceTask.csv'
+    service_task_gen.run(batch_id, case_file, service_task_file, today_datetime, len(sales_tasks_dataset.data) + 1)
+
+    # generate service tasks, from cases
+    sales_events_dataset = data_gen.load_dataset('sales_events', sales_event_file, ['External_Id__c'])
+    service_event_file = output_path + 'ServiceEvent.csv'
+    service_event_gen.run(batch_id, case_file, service_event_file, today_datetime, len(sales_events_dataset.data) + 1)
 
     # generate case history
     history_file = output_path + 'CaseHistory.csv'
@@ -248,8 +264,11 @@ def run():
             latest_agent_work_file = latest_output_path + 'AgentWork.csv'
         copy_data_file.run(aw, latest_agent_work_file)
 
-    latest_task_file = latest_output_path + 'Task.csv'
-    copy_data_file.run(task_file, latest_task_file)
+    latest_service_task_file = latest_output_path + 'ServiceTask.csv'
+    copy_data_file.run(service_task_file, latest_service_task_file)
+
+    latest_service_event_file = latest_output_path + 'ServiceEvent.csv'
+    copy_data_file.run(service_event_file, latest_service_event_file)
 
     latest_history_file = latest_output_path + 'CaseHistory.csv'
     copy_data_file.run(history_file, latest_history_file)
