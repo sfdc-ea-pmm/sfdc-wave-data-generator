@@ -19,6 +19,7 @@ today = datetime.combine(today, datetime.min.time())
 
 
 def run(batch_id, source_file_name, output_file_name, reference_datetime=today, id_offset=0):
+    
     data_gen = DataGenerator()
 
     # load source file
@@ -45,18 +46,19 @@ def run(batch_id, source_file_name, output_file_name, reference_datetime=today, 
     data_gen.add_formula_column('CallDurationInSeconds', formula=task.task_call_duration)
     data_gen.add_formula_column('CallDisposition', formula=task.task_call_disposition)
     data_gen.add_formula_column('CallType', formula=task.task_call_type)
-
     data_gen.add_formula_column('Status', formula=task.task_status)
-
     data_gen.add_formula_column('Priority', formula=task.task_priority)
 
     def create_date_formula(column_values):
         case_create_date = dateutil.parser.parse(column_values['CreatedDate__c'])
         case_close_date = datetime.combine(dateutil.parser.parse(column_values['ActivityDate']), case_create_date.time())
+        if case_close_date > reference_datetime:
+            case_close_date = reference_datetime
         create_date = fake.date_time_between_dates(case_create_date, case_close_date)
         if create_date > reference_datetime:
             create_date = reference_datetime
         return create_date.isoformat(sep=' ')
+
     data_gen.add_formula_column('CreatedDate__c', create_date_formula)
 
     data_gen.add_copy_column('LastModifiedDate__c', 'CreatedDate__c')
@@ -64,8 +66,8 @@ def run(batch_id, source_file_name, output_file_name, reference_datetime=today, 
     def activity_date_formula(column_values):
         create_date = dateutil.parser.parse(column_values['CreatedDate__c']).date()
         return (create_date + timedelta(days=randint(0, 14))).isoformat()
+    
     data_gen.add_formula_column('ActivityDate', activity_date_formula)
-
 
     data_gen.add_formula_column('Subject', formula=task.task_subject_simple)
 

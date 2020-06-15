@@ -17,13 +17,12 @@ today_datetime = datetime.combine(today, datetime.min.time())
 
 
 def run(batch_id, source_file_name, output_file_name, reference_date=today_datetime):
+    
     def get_close_date(values):
         return dateutil.parser.parse(values['ClosedDate__c'])
 
-
     def get_create_date(values):
         return dateutil.parser.parse(values['CreatedDate__c'])
-
 
     data_gen = DataGenerator()
 
@@ -41,7 +40,9 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
                                                          p=[.12, .13, .13, .07, .09, .13, .13, .11, .09])),
                                             minutes=randint(0, 60),
                                             seconds=randint(0, 60))
+        
         return close_date.isoformat(sep=' ')
+    
     data_gen.add_formula_column('ClosedDate__c', close_date_formula)
 
 
@@ -49,6 +50,7 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
         time_open = int(column_values['Time_Open__c'])
         date_closed = dateutil.parser.parse(column_values['ClosedDate__c'])
         return (date_closed - timedelta(days=time_open)).isoformat(sep=' ')
+    
     data_gen.add_formula_column('CreatedDate__c', created_date_formula)
 
     # generate last activity date
@@ -122,7 +124,6 @@ def run(batch_id, source_file_name, output_file_name, reference_date=today_datet
     data_gen.apply_transformations()
 
     data_gen.write(output_file_name)
-
 
 if __name__ == "__main__":
     # execute only if running as a script
