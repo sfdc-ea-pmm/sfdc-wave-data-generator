@@ -1,3 +1,4 @@
+import sales_service_data_gen
 import fsl_data_gen
 import sales_data_gen
 import services_data_gen
@@ -16,6 +17,10 @@ import mfg_gen
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 scheduler = BlockingScheduler()
+
+@scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=5)
+def scheduled_sales_service_gen():
+    sales_service_data_gen.run()
 
 @scheduler.scheduled_job('cron', day_of_week='mon-fri', hour=6)
 def scheduled_mfg_gen():

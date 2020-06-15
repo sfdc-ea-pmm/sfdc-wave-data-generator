@@ -49,6 +49,14 @@ case_oppty = 'service/data/output/Opportunity.csv'
 case_agent_work = 'service/data/output/AgentWork.csv'
 case_user_presence = 'service/data/output/UserServicePresence.csv'
 
+## sales_service ##
+ss_source_oppty_shape = 'sales_service/data/input/OpportunityShape.csv'
+ss_oppty_temporal_path = 'sales_service/data/output/archive/{}/'
+ss_oppty_latest_path = 'sales_service/data/output/latest/'
+ss_case_latest_path = 'sales_service/data/output/latest/'
+ss_source_case_shape = 'sales_service/data/input/CaseShape.csv'
+## /sales_service ##
+
 
 # **********************
 # Metadata Values Maps
@@ -258,7 +266,7 @@ forecast_category_name = {
 # REVENUE
 # convert categorical from 1-5 to SMB etc.
 def convert_revenue_size(revenue_cat):
-    return client_size_rev(revenue_cat)
+    return client_size_rev[revenue_cat]
 
 
 # this is where we convert from categorical into continuous - but kind of random
