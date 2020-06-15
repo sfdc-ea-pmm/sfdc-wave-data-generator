@@ -14,7 +14,6 @@ from sales_service import oppty_forecasting_user_gen
 from sales_service import oppty_quota_gen
 from sales_service import oppty_shape_gen
 
-# from service>
 from sales_service import case_agent_work_gen
 from sales_service import case_article_gen
 from sales_service import case_history_gen
@@ -30,9 +29,7 @@ from sales_service import case_user_presence_gen
 
 from sales_service import ss_account_gen
 from sales_service import ss_contact_gen
-from sales_service import ss_event_gen
 from sales_service import ss_case_gen
-from sales_service import ss_task_gen
 from sales_service import ss_user_gen
 
 from sales_service import sales_event_gen
@@ -49,7 +46,7 @@ def run():
     data_gen = DataGenerator()
     today = date.today()
     today_datetime = datetime.combine(today, datetime.min.time())
-    output_path = definitions.oppty_temporal_path.format(today.isoformat())
+    output_path = definitions.ss_oppty_temporal_path.format(today.isoformat())
 
     batch_id = datetime.now().strftime("%Y%m%d%-H%M%S%f")
 
@@ -59,7 +56,7 @@ def run():
 
     # generate opportunity shape
     oppty_shape_file = output_path + 'OpportunityShape.csv'
-    oppty_shape_gen.run(batch_id, definitions.source_oppty_shape, oppty_shape_file, today_datetime)
+    oppty_shape_gen.run(batch_id, definitions.ss_source_oppty_shape, oppty_shape_file, today_datetime)
 
     # generate temporal opportunity shape
     oppty_file = output_path + 'Opportunity.csv'
@@ -108,7 +105,7 @@ def run():
     oppty_account_cleanup.run(account_file, account_file)
 
     # copy all files to the latest folder
-    latest_output_path = definitions.oppty_latest_path
+    latest_output_path = definitions.ss_oppty_latest_path
 
     if os.environ.get('WRITE_MODE') != 'S3' and not os.path.exists(latest_output_path):
         os.makedirs(latest_output_path)
@@ -147,7 +144,7 @@ def run():
     
     # generate case shape
     case_shape_file = output_path + 'CaseShape.csv'
-    case_shape_gen.run(batch_id, definitions.source_case_shape, case_shape_file, today_datetime)
+    case_shape_gen.run(batch_id, definitions.ss_source_case_shape, case_shape_file, today_datetime)
 
     # generate case
     case_file = output_path + 'Case.csv'
@@ -232,7 +229,7 @@ def run():
 
     # copy all files to the latest folder
     
-    latest_output_path = definitions.case_latest_path
+    latest_output_path = definitions.ss_case_latest_path
 
     if os.environ.get('WRITE_MODE') != 'S3' and not os.path.exists(latest_output_path):
         os.makedirs(latest_output_path)
