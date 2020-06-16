@@ -46,7 +46,7 @@ def run():
     data_gen = DataGenerator()
     today = date.today()
     today_datetime = datetime.combine(today, datetime.min.time())
-    output_path = definitions.ss_oppty_temporal_path.format(today.isoformat())
+    output_path = definitions.ss_temporal_path.format(today.isoformat())
 
     batch_id = datetime.now().strftime("%Y%m%d%-H%M%S%f")
 
@@ -105,7 +105,7 @@ def run():
     oppty_account_cleanup.run(account_file, account_file)
 
     # copy all files to the latest folder
-    latest_output_path = definitions.ss_oppty_latest_path
+    latest_output_path = definitions.ss_latest_path
 
     if os.environ.get('WRITE_MODE') != 'S3' and not os.path.exists(latest_output_path):
         os.makedirs(latest_output_path)
@@ -229,11 +229,6 @@ def run():
 
     # copy all files to the latest folder
     
-    latest_output_path = definitions.ss_case_latest_path
-
-    if os.environ.get('WRITE_MODE') != 'S3' and not os.path.exists(latest_output_path):
-        os.makedirs(latest_output_path)
-
     latest_case_file = latest_output_path + 'Case.csv'
     copy_data_file.run(case_file, latest_case_file)
 
