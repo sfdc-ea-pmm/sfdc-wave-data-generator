@@ -1,4 +1,5 @@
 import random
+import os
 
 source_data = 'sales/data/input/WA_Fn-UseC_-Sales-Win-Loss.csv'
 source_users = 'sales/data/input/Users.csv'
@@ -49,13 +50,17 @@ case_oppty = 'service/data/output/Opportunity.csv'
 case_agent_work = 'service/data/output/AgentWork.csv'
 case_user_presence = 'service/data/output/UserServicePresence.csv'
 
-## sales_service ##
-ss_source_oppty_shape = 'sales_service/data/input/OpportunityShape.csv'
-ss_oppty_temporal_path = 'sales_service/data/output/archive/{}/'
-ss_oppty_latest_path = 'sales_service/data/output/latest/'
-ss_case_latest_path = 'sales_service/data/output/latest/'
-ss_source_case_shape = 'sales_service/data/input/CaseShape.csv'
-## /sales_service ##
+## sales + service ##
+sales_service_folder = 'sales-service'
+
+if os.environ.get('WRITE_MODE') != 'S3':
+    sales_service_folder = 'sales_service'
+
+ss_source_oppty_shape = sales_service_folder + '/data/input/OpportunityShape.csv'
+ss_source_case_shape = sales_service_folder + '/data/input/CaseShape.csv'
+ss_temporal_path = sales_service_folder + '/data/output/archive/{}/'
+ss_latest_path = sales_service_folder + '/data/output/latest/'
+## /sales + service ##
 
 
 # **********************
