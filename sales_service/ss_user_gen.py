@@ -63,8 +63,9 @@ def run(batch_id, source_file_name, output_file_name, manager_output_file_name):
     data_gen.add_formula_column('Title', lambda: choice(titles, p=[.70, .30]))
 
     # generate constant values
+    data_gen.add_constant_column('IsActive', 'false')
     data_gen.add_constant_column('TimeZoneSidKey', 'America/Los_Angeles')
-    data_gen.add_constant_column('Profile.Name', 'Service Cloud')
+    data_gen.add_constant_column('Profile.Name', 'Standard User')
     # from oppty> data_gen.add_constant_column('Profile.Name', 'Standard User')
     data_gen.add_constant_column('LocaleSidKey', 'en_US')
     data_gen.add_constant_column('LanguageLocaleKey', 'en_US')
