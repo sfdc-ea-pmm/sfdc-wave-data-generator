@@ -78,5 +78,5 @@ def scheduled_fins_ido_wealth_gen():
 def scheduled_fsc_wealth_gen():
     fsc_wealth_gen.run()
 
-# Last Deploy: Mon Aug 1 2022
+# Last Deploy: Monday Aug 1 2022
 scheduler.start()
