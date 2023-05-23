@@ -11,7 +11,7 @@ import random
 import sys
 import warnings
 
-from collections import OrderedDict
+from collections.abc import OrderedDict
 from numpy import random
 
 logger = logging.getLogger(__name__)
