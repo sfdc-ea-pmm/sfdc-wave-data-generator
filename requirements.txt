@@ -1,4 +1,4 @@
-APScheduler==3.3.1
+APScheduler==3.9.1
 boto3==1.26.115
 botocore==1.29.115
 dj-database-url==0.5.0
