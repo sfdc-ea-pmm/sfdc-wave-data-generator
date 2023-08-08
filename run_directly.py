@@ -1,0 +1,17 @@
+import sales_service_data_gen
+import fsl_data_gen
+import sales_data_gen
+import services_data_gen
+import B2B_commerce_gen
+import approval_gen
+import campaing_gen
+import fundraising_gen
+import lead_trending_gen
+import social_gen
+import subscription_gen
+import fins_ido_wealth_gen
+import fsc_wealth_gen
+import fsc_wealth_cumulus_gen
+import mfg_gen
+
+mfg_gen.run()
